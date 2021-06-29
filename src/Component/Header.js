@@ -14,9 +14,15 @@ function Header(){
             <IconContext.Provider value>
                 <Main>
                     <Container>
-                        <FiHome style={{width: "25px", height: "25px"}}/>
-                        <FiShoppingCart style={{width: "25px", height: "25px"}}/>
-                        <BsFillPersonFill style={{width: "25px", height: "25px"}}/>
+                        <Link to={"/"}>
+                            <FiHome style={{width: "25px", height: "25px"}}/>
+                        </Link>
+                        <Link to={"/cart"}>
+                            <FiShoppingCart style={{width: "25px", height: "25px"}}/>
+                        </Link>
+                        <Link to={"/profile"}>
+                            <BsFillPersonFill style={{width: "25px", height: "25px"}}/>
+                        </Link>
                         <IoFastFoodSharp onClick={()=>setClicked(!clicked)} style={{width: "25px", height: "25px"}}/>
                         <BsSearch style={{width: "25px", height: "25px"}}/>
                         <BsBoxArrowRight style={{width: "25px", height: "25px"}}/>
