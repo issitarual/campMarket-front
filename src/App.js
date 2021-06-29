@@ -3,8 +3,8 @@ import GlobalStyles from "./Styles/GlobalStyles";
 import UserContext from "./Context/UserContext";
 import { useState } from "react";
 
-import Home from "./Component/Home/Home";
 import Products from "./Pages/Products";
+import Category from "./Pages/Category";
 
 function App() {
   const [user, setUser] = useState();
@@ -14,6 +14,15 @@ function App() {
         <GlobalStyles />
         <Switch>
           <Route path="/" exact component={Products} />
+          <Route path="/vegetables">
+            <Category name={"vegetables"}/>
+          </Route>
+          <Route path="/cold">
+            <Category name={"cold products"}/>
+          </Route>
+          <Route path="/meat">
+            <Category name={"meat"}/>
+          </Route>
         </Switch>
       </BrowserRouter>
     </UserContext.Provider>
