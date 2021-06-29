@@ -6,6 +6,11 @@ const Container = styled.div`
     margin-top: 50px;
     padding-right: 30px;
     padding-left: 30px;
+    margin-left: 200px;
+    @media (max-width: 450px){
+        margin-left: 0;
+        margin-top: 110px;
+    }
 `;
 
 const DeliveryContainer = styled.header`
@@ -99,6 +104,7 @@ const ProductContainer = styled.div`
     justify-content: center;
     font-size: 15px;
     font-family: 'Roboto', sans-serif;
+    background-color: #fff;
     img{
         width: 210px;
         height: 210px;
