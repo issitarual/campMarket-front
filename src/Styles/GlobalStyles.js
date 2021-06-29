@@ -61,7 +61,7 @@ strong{
 
 //Config Sidebar
 #header{
-    position: absolute;
+    position: fixed;
     left: 0;
     min-width: 200px;
 }
