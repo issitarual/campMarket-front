@@ -84,17 +84,22 @@ const Category = styled.div`
         color: #3F3F40;
         text-align: center;
         padding: 5px 10px;
+        cursor: pointer;
     }
 `;
 
 const AllProducts = styled.div`
     display: flex;
-    margin-bottom: 20px;
-    overflow-x: scroll;
+    margin-bottom: 20px; 
+    justify-content: space-between;
+    @media (max-width: 1230px){
+        overflow-x: scroll;
+    }
 `;
 
 const ProductContainer = styled.div`
     border: 2px solid #ccc;
+    width: 230px;
     border-radius: 5px;
     padding: 15px 10px;
     margin-right: 15px;
@@ -109,10 +114,13 @@ const ProductContainer = styled.div`
         width: 210px;
         height: 210px;
         margin-bottom: 5px;
+        cursor: pointer;
     }
     h6{
         color: #4A4A4A;
         margin-bottom: 5px;
+        text-align: center;
+        cursor: pointer;
     }
     p{
         font-weight: bold;
@@ -128,6 +136,7 @@ const ProductContainer = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
+        cursor: pointer;
     }
     span{
         color: #fff;

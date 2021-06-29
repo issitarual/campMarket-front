@@ -2,65 +2,32 @@ import Delivery from "./Delivery";
 import Products from "./Products";
 import Footer from "./Footer";
 
+import axios from 'axios';
+import { useEffect, useState } from "react";
+
 import { Container } from "./homeStyles";
 
 export default function Home (){
-    const arrayOfProducts = [{
-        name: "tomato",
-        image: "https://abcemcasa.vteximg.com.br/arquivos/ids/291906-450-450/TOMATE-ANDREIA-KG.jpg?v=637292230818400000",
-        price: "R$4,99",
-        description: "Conhecido também como tomate Longa Vida, é o mais consumido no País. Tem alta durabilidade graças aos genes da composição, mas esses mesmos genes também influenciam no sabor e no aspecto. É um tomate mais aguado e amarelado, ideal para salada, mas ruim para molhos, que tendem a ficar mais alaranjados e sem sabor.  A bandeja de aproximadamente 1kg contém 6 unidades, de acordo com a safra.",
-        type: "vegetables"
-    },
-    {
-        name: "tomato",
-        image: "https://abcemcasa.vteximg.com.br/arquivos/ids/291906-450-450/TOMATE-ANDREIA-KG.jpg?v=637292230818400000",
-        price: "R$4,99",
-        description: "Conhecido também como tomate Longa Vida, é o mais consumido no País. Tem alta durabilidade graças aos genes da composição, mas esses mesmos genes também influenciam no sabor e no aspecto. É um tomate mais aguado e amarelado, ideal para salada, mas ruim para molhos, que tendem a ficar mais alaranjados e sem sabor.  A bandeja de aproximadamente 1kg contém 6 unidades, de acordo com a safra.",
-        type: "vegetables"
-    },
-    {
-        name: "tomato",
-        image: "https://abcemcasa.vteximg.com.br/arquivos/ids/291906-450-450/TOMATE-ANDREIA-KG.jpg?v=637292230818400000",
-        price: "R$4,99",
-        description: "Conhecido também como tomate Longa Vida, é o mais consumido no País. Tem alta durabilidade graças aos genes da composição, mas esses mesmos genes também influenciam no sabor e no aspecto. É um tomate mais aguado e amarelado, ideal para salada, mas ruim para molhos, que tendem a ficar mais alaranjados e sem sabor.  A bandeja de aproximadamente 1kg contém 6 unidades, de acordo com a safra.",
-        type: "vegetables"
-    },
-    {
-        name: "tomato",
-        image: "https://abcemcasa.vteximg.com.br/arquivos/ids/291906-450-450/TOMATE-ANDREIA-KG.jpg?v=637292230818400000",
-        price: "R$4,99",
-        description: "Conhecido também como tomate Longa Vida, é o mais consumido no País. Tem alta durabilidade graças aos genes da composição, mas esses mesmos genes também influenciam no sabor e no aspecto. É um tomate mais aguado e amarelado, ideal para salada, mas ruim para molhos, que tendem a ficar mais alaranjados e sem sabor.  A bandeja de aproximadamente 1kg contém 6 unidades, de acordo com a safra.",
-        type: "vegetables"
-    },
-    {
-        name: "tomato",
-        image: "https://abcemcasa.vteximg.com.br/arquivos/ids/291906-450-450/TOMATE-ANDREIA-KG.jpg?v=637292230818400000",
-        price: "R$4,99",
-        description: "Conhecido também como tomate Longa Vida, é o mais consumido no País. Tem alta durabilidade graças aos genes da composição, mas esses mesmos genes também influenciam no sabor e no aspecto. É um tomate mais aguado e amarelado, ideal para salada, mas ruim para molhos, que tendem a ficar mais alaranjados e sem sabor.  A bandeja de aproximadamente 1kg contém 6 unidades, de acordo com a safra.",
-        type: "vegetables"
-    },
-    {
-        name: "tomato",
-        image: "https://abcemcasa.vteximg.com.br/arquivos/ids/291906-450-450/TOMATE-ANDREIA-KG.jpg?v=637292230818400000",
-        price: "R$4,99",
-        description: "Conhecido também como tomate Longa Vida, é o mais consumido no País. Tem alta durabilidade graças aos genes da composição, mas esses mesmos genes também influenciam no sabor e no aspecto. É um tomate mais aguado e amarelado, ideal para salada, mas ruim para molhos, que tendem a ficar mais alaranjados e sem sabor.  A bandeja de aproximadamente 1kg contém 6 unidades, de acordo com a safra.",
-        type: "meat"
-    },
-    {
-        name: "tomato",
-        image: "https://abcemcasa.vteximg.com.br/arquivos/ids/291906-450-450/TOMATE-ANDREIA-KG.jpg?v=637292230818400000",
-        price: "R$4,99",
-        description: "Conhecido também como tomate Longa Vida, é o mais consumido no País. Tem alta durabilidade graças aos genes da composição, mas esses mesmos genes também influenciam no sabor e no aspecto. É um tomate mais aguado e amarelado, ideal para salada, mas ruim para molhos, que tendem a ficar mais alaranjados e sem sabor.  A bandeja de aproximadamente 1kg contém 6 unidades, de acordo com a safra.",
-        type: "cold products"
-    },
-    ]
+    const [products, setProducts] = useState([]);
+    useEffect(() => {
+        const request = axios.get("http://localhost:4000/products");
+
+        request.then(success => setProducts(success.data));
+        request.catch(error => alert("Algo deu errado, tente mais tarde!"));
+    },[]);
+
+    const allVegetables = products.filter(n => n.categoryName === "vegetables");
+    const vegetables = allVegetables.slice(0, 4);
+    const allColdProducts = products.filter(n => n.categoryName === "cold products");
+    const coldProducts = allColdProducts.slice(0, 4);
+    const allMeat = products.filter(n => n.categoryName === "meat");
+    const meat = allMeat.slice(0, 4);
     return(
         <Container>
             <Delivery/>
-            <Products type={"vegetables"} products={arrayOfProducts.filter(n => n.type === "vegetables")}/>
-            <Products type={"cold products"} products={arrayOfProducts.filter(n => n.type === "cold products")}/>
-            <Products type={"meat"} products={arrayOfProducts.filter(n => n.type === "meat")}/>
+            <Products type={"vegetables"} products={vegetables}/>
+            <Products type={"cold products"} products={coldProducts}/>
+            <Products type={"meat"} products={meat}/>
             <Footer/>
         </Container>
     )

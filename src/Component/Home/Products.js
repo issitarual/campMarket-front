@@ -1,12 +1,15 @@
 import { Category, AllProducts } from './homeStyles';
 import EachProduct from './EachProduct';
 
+import { useHistory } from 'react-router-dom';
+
 export default function Products({type, products}){
+    let history = useHistory();
     return(
         <>
             <Category>
                 <p>{type.toUpperCase()}</p>
-                <button>
+                <button onClick={goToCategory}>
                     See more +
                 </button>
             </Category>
@@ -15,4 +18,11 @@ export default function Products({type, products}){
             </AllProducts>
         </>
     )
+    function goToCategory(){
+        if(type === "cold products"){
+            history.push("/cold");
+            return;
+        }
+        history.push(`/${type}`);
+    }
 }
