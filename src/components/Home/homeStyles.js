@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
-const DeliveryContainer = styled.div`
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+const DeliveryContainer = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -40,6 +45,34 @@ const Transportation = styled.div`
     }
 `;
 
+const Category = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 30px;
+    padding-left: 30px;
+    margin-bottom: 20px;
+    p{
+        font-size: 15px;
+        font-family: 'Roboto', sans-serif;
+        color: #3F3F40;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+    button{
+        background-color: #fff;
+        border-radius: 5px;
+        border: 2px solid #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 15px;
+        font-family: 'Roboto', sans-serif;
+        color: #3F3F40;
+        text-align: center;
+        padding: 5px;
+    }
+`;
 
 
-export {DeliveryContainer, Local, Transportation}
+export {DeliveryContainer, Local, Transportation, Container, Category}

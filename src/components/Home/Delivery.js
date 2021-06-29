@@ -11,11 +11,11 @@ export default function Delivery(){
                     width="25px"
                 />
                 <div></div>
-                <h6>Entregamos em</h6>
+                <h6>Deliver in</h6>
                 <p>Rio de Janeiro,RJ</p>
             </Local>
             <Transportation>
-                <p>Entrega<br/>CampMarket</p>
+                <p>Delivery<br/>CampMarket</p>
                 <RocketOutline
                     color={'#EF4F4F'} 
                     height="25px"
