@@ -1,21 +1,18 @@
-import { Category } from './homeStyles';
-import { AddOutline } from 'react-ionicons'
+import { Category, AllProducts } from './homeStyles';
+import EachProduct from './EachProduct';
 
-export default function Products({type}){
+export default function Products({type, products}){
     return(
         <>
             <Category>
                 <p>{type.toUpperCase()}</p>
                 <button>
-                    See more
-                    <AddOutline
-                        color={'#9A9A9A'} 
-                        height="15px"
-                        width="15px"
-                        style={{ verticalAlign: 'middle' }}
-                    />
+                    See more +
                 </button>
             </Category>
+            <AllProducts>
+                {products.map(n => <EachProduct product={n}/>)}
+            </AllProducts>
         </>
     )
 }
