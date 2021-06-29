@@ -6,9 +6,23 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { IconContext } from 'react-icons'
 import 'react-pro-sidebar/dist/css/styles.css';
+import axios from "axios";
+import Loader from "react-loader-spinner";
 
-function Header(){
-    const [ clicked, setClicked ] = useState(false);
+function Header({isOpen ,setIsOpen}){
+    const [ showProducts, setShowProducts ] = useState(false);
+    const [ showSearch, setShowSearch ] = useState(false);
+    const [disable, setDisable] = useState(false);
+    const [searchText, setSearchText] = useState("");
+
+    function AttemptToSearch(e){
+        e.preventDefault();
+        if(searchText.length === 0) return alert("Empty search bar!");
+        // setDisable(true);
+        alert("Feature ainda não implementada");
+    }
+
+
     return(
         <>
             <IconContext.Provider value>
@@ -23,11 +37,11 @@ function Header(){
                         <Link to={"/profile"}>
                             <BsFillPersonFill style={{width: "25px", height: "25px"}}/>
                         </Link>
-                        <IoFastFoodSharp onClick={()=>setClicked(!clicked)} style={{width: "25px", height: "25px"}}/>
-                        <BsSearch style={{width: "25px", height: "25px"}}/>
+                        <IoFastFoodSharp onClick={()=>{setShowSearch(false);setSearchText("");setShowProducts(!showProducts)}} style={{width: "25px", height: "25px"}}/>
+                        <BsSearch style={{width: "25px", height: "25px"}} onClick={()=>{setShowProducts(false);setSearchText("");setShowSearch(!showSearch)}}/>
                         <BsBoxArrowRight style={{width: "25px", height: "25px"}}/>
                     </Container>
-                    <ProductsMenu click={clicked} >
+                    <ProductsMenu showProducts={showProducts} >
                         <Link to={"/vegetables"}>
                             <p>Vegetables</p>
                         </Link>
@@ -38,6 +52,18 @@ function Header(){
                             <p>Cold Products</p>
                         </Link>
                     </ProductsMenu>
+                    <Search showSearch={showSearch}>
+                        <Form onSubmit={AttemptToSearch} >
+                            <Input 
+                                type="text"
+                                disabled={disable}
+                                value={searchText}
+                                onChange={(e)=>{setSearchText(e.target.value)}}
+                                placeholder="Search bar"
+                            />
+                            <Button type="submit">{disable === true ? <Loader type="ThreeDots" color="#FFF" height={35} width={45}/> : "Entrar" }</Button>
+                        </Form>
+                    </Search>
                 </Main>
             </IconContext.Provider>
         </>
@@ -48,6 +74,7 @@ const Main = styled.div`
     display: none;
     font-family: 'Roboto', sans-serif;
 @media (max-width: 450px){
+        position: fixed;
         display: flex;
         flex-direction: column;
 }
@@ -67,7 +94,7 @@ const Container = styled.div`
 `
 
 const ProductsMenu = styled.div`
-    display: ${props => props.click === true ? "flex" : "none"};
+    display: ${props => props.showProducts ? "flex" : "none"};
     width: 100vw;
     height: 150px;
     background-color: #fff;
@@ -75,6 +102,39 @@ const ProductsMenu = styled.div`
     p{
         padding: 105px 20px 0px 20px;
     }
+`
+
+const Search = styled.div`
+    display: ${props => props.showSearch === true ? "flex" : "none"};
+    width: 100vw;
+    height: 150px;
+    background-color: #fff;
+    justify-content: space-between;
+    padding-top: 95px;
+    justify-content: center;
+`
+
+const Form = styled.form`
+    display: flex;
+`
+
+const Input = styled.input`
+    width: 75vw;
+    height: 35px;
+    outline: none;
+    border-radius: 5px;
+    background-color: #b3e4e1;
+    border: none;
+    padding-left: 10px;
+`
+
+const Button = styled.button`
+    width: 60px;
+    height: 35px;
+    margin-left: 10px;
+    border: none;
+    background-color: #b3e4e1;
+    border-radius: 5px;   
 `
 
 export default Header;

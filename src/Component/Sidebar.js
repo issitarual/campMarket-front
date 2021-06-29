@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import 'react-pro-sidebar/dist/css/styles.css';
 import { ProSidebar, Menu, MenuItem, SubMenu, SidebarHeader, SidebarContent, SidebarFooter } from 'react-pro-sidebar';
 
-function Sidebar(){
+function Sidebar({isOpen ,setIsOpen}){
     return(
         <>
             <div id="header">
@@ -42,7 +42,7 @@ function Sidebar(){
                                     <Link to={"/cold"} />
                                 </MenuItem>
                             </SubMenu>
-                            <MenuItem icon={<BsSearch />}>
+                            <MenuItem onClick={()=>setIsOpen(!isOpen)} icon={<BsSearch />}>
                                 Search
                             </MenuItem>
                         </Menu>
