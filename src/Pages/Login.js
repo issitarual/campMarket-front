@@ -21,7 +21,7 @@ function login(e){
       body
     );
 
-    //setLoading(true);
+    setLoading(true);
 
     request.then((response) => {
 
@@ -31,7 +31,7 @@ function login(e){
     });
 
     request.catch((error) => {
-        //setLoading(false);
+        setLoading(false);
         if(error.response.status===401) alert("Falha no login, email ou senha incorretos!");
      
     });
@@ -67,7 +67,7 @@ disabled={loading}
 />  
 
 
-<button className="Save" type="submit" required isdisabled={loading} >
+<button  type="submit" required isdisabled={loading} >
  {!loading ? "Log In" : <Loader type="ThreeDots" color="#FFF" height={45} width={50}/>}
 </button> 
 
@@ -89,12 +89,13 @@ const Body =styled.div `
   height: 100vh;
   display:flex;
   align-items:center;
-  //justify-content: space-between;
   flex-direction: column;
 
 span{
     cursor:pointer;
     color: grey;
+    font-size: 20px;
+    text-decoration-line: underline;
 }
 `;
 

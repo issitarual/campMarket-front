@@ -16,7 +16,7 @@ const {user,setUser} = useContext(UserContext);
 const history=useHistory();  
 
     function logOut(){
-        const config = {
+       const config = {
             headers: {
               Authorization: `Bearer ${user.token}`,
             },
@@ -28,7 +28,7 @@ const history=useHistory();
           );
           request.then((response) => {
             localStorage.removeItem("user") 
-              history.push("/")
+              history.push("/Login")
               console.log(response)
           });
       
@@ -81,7 +81,7 @@ const history=useHistory();
                     </SidebarContent>
                     <SidebarFooter>
                         <Menu>
-                            <MenuItem icon={<BsBoxArrowRight onClick={()=>(logOut())}/>}>
+                            <MenuItem icon={<BsBoxArrowRight />} onClick={()=>(logOut())}>
                                 Logout
                             </MenuItem>
                         </Menu>
