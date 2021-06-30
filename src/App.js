@@ -2,6 +2,8 @@ import { Route, Switch, BrowserRouter } from "react-router-dom";
 import GlobalStyles from "./Styles/GlobalStyles";
 import UserContext from "./Context/UserContext";
 import { useState } from "react";
+
+import Home from "./Component/Home/Home";
 import Products from "./Pages/Products";
 import Login from "./Pages/Login";
 import SignUp from "./Pages/SignUp";

@@ -49,6 +49,10 @@ const Main = styled.div`
     font-family: 'Roboto', sans-serif;
 @media (max-width: 450px){
         display: flex;
+        position: fixed;
+        width: 100%;
+        top: 50px;
+        left: 0;
         flex-direction: column;
 }
 `
