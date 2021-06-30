@@ -6,9 +6,40 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { IconContext } from 'react-icons'
 import 'react-pro-sidebar/dist/css/styles.css';
+import axios  from 'axios';
+import UserContext from "../Context/UserContext";
+import { useHistory } from "react-router";
+import { useContext } from 'react';
+
 
 function Header(){
     const [ clicked, setClicked ] = useState(false);
+
+    const {user,setUser} = useContext(UserContext);
+const history=useHistory();  
+
+    function logOut(){
+      if (!user) return;
+       const config = {
+            headers: {
+              Authorization: `Bearer ${user.token}`,
+            },
+          }; 
+      
+          const request = axios.delete(
+            "http://localhost:4000/logOut",
+            config
+          );
+          request.then((response) => {
+              localStorage.removeItem("user") 
+              history.push("/Login")
+          });
+      
+          request.catch((error) => {
+            alert("Falha ao sair!")
+          });
+    }
+
     return(
         <>
             <IconContext.Provider value>
@@ -25,7 +56,7 @@ function Header(){
                         </Link>
                         <IoFastFoodSharp onClick={()=>setClicked(!clicked)} style={{width: "25px", height: "25px"}}/>
                         <BsSearch style={{width: "25px", height: "25px"}}/>
-                        <BsBoxArrowRight style={{width: "25px", height: "25px"}}/>
+                        <BsBoxArrowRight style={{width: "25px", height: "25px"}} onClick={()=>(logOut())}/>
                     </Container>
                     <ProductsMenu click={clicked} >
                         <Link to={"/vegetables"}>

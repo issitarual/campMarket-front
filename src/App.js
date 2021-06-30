@@ -4,6 +4,8 @@ import UserContext from "./Context/UserContext";
 import { useState } from "react";
 
 import Products from "./Pages/Products";
+import Login from "./Pages/Login";
+import SignUp from "./Pages/SignUp";
 import Category from "./Pages/Category";
 
 function App() {
@@ -14,6 +16,8 @@ function App() {
         <GlobalStyles />
         <Switch>
           <Route path="/" exact component={Products} />
+          <Route path="/Login" exact component={Login} />
+          <Route path="/SignUp" exact component={SignUp} />
           <Route path="/vegetables">
             <Category name={"vegetables"}/>
           </Route>
