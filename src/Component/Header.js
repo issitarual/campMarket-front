@@ -7,18 +7,38 @@ import { Link } from "react-router-dom";
 import { IconContext } from 'react-icons'
 import 'react-pro-sidebar/dist/css/styles.css';
 import Loader from "react-loader-spinner";
+import axios  from 'axios';
+import UserContext from "../Context/UserContext";
+import { useHistory } from "react-router";
+import { useContext } from 'react';
+
 
 function Header({isOpen ,setIsOpen}){
-    const [ showProducts, setShowProducts ] = useState(false);
-    const [ showSearch, setShowSearch ] = useState(false);
-    const [disable, setDisable] = useState(false);
-    const [searchText, setSearchText] = useState("");
+    const [ clicked, setClicked ] = useState(false);
 
-    function AttemptToSearch(e){
-        e.preventDefault();
-        if(searchText.length === 0) return alert("Empty search bar!");
-        // setDisable(true);
-        alert("Feature ainda não implementada");
+    const {user,setUser} = useContext(UserContext);
+const history=useHistory();  
+
+    function logOut(){
+      if (!user) return;
+       const config = {
+            headers: {
+              Authorization: `Bearer ${user.token}`,
+            },
+          }; 
+      
+          const request = axios.delete(
+            "http://localhost:4000/logOut",
+            config
+          );
+          request.then((response) => {
+              localStorage.removeItem("user") 
+              history.push("/Login")
+          });
+      
+          request.catch((error) => {
+            alert("Falha ao sair!")
+          });
     }
 
 
@@ -36,9 +56,9 @@ function Header({isOpen ,setIsOpen}){
                         <Link to={"/profile"}>
                             <BsFillPersonFill style={{width: "25px", height: "25px"}}/>
                         </Link>
-                        <IoFastFoodSharp onClick={()=>{setShowSearch(false);setSearchText("");setShowProducts(!showProducts)}} style={{width: "25px", height: "25px"}}/>
-                        <BsSearch style={{width: "25px", height: "25px"}} onClick={()=>{setShowProducts(false);setSearchText("");setShowSearch(!showSearch)}}/>
-                        <BsBoxArrowRight style={{width: "25px", height: "25px"}}/>
+                        <IoFastFoodSharp onClick={()=>setClicked(!clicked)} style={{width: "25px", height: "25px"}}/>
+                        <BsSearch style={{width: "25px", height: "25px"}}/>
+                        <BsBoxArrowRight style={{width: "25px", height: "25px"}} onClick={()=>(logOut())}/>
                     </Container>
                     <ProductsMenu showProducts={showProducts} >
                         <Link to={"/vegetables"}>

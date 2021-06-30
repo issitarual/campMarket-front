@@ -5,8 +5,37 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import 'react-pro-sidebar/dist/css/styles.css';
 import { ProSidebar, Menu, MenuItem, SubMenu, SidebarHeader, SidebarContent, SidebarFooter } from 'react-pro-sidebar';
+import axios  from 'axios';
+import UserContext from "../Context/UserContext";
+import { useHistory } from "react-router";
+import { useContext } from 'react';
 
 function Sidebar({isOpen ,setIsOpen}){
+    const {user,setUser} = useContext(UserContext);
+    const history=useHistory();  
+
+    function logOut(){
+       if (!user) return;
+       const config = {
+            headers: {
+              Authorization: `Bearer ${user.token}`,
+            },
+          }; 
+      
+          const request = axios.delete(
+            "http://localhost:4000/logOut",
+            config
+          );
+          request.then((response) => {
+            localStorage.removeItem("user") 
+              history.push("/Login")
+          });
+      
+          request.catch((error) => {
+            alert("Falha ao sair!")
+          });
+    }
+
     return(
         <>
             <div id="header">
@@ -49,7 +78,7 @@ function Sidebar({isOpen ,setIsOpen}){
                     </SidebarContent>
                     <SidebarFooter>
                         <Menu>
-                            <MenuItem icon={<BsBoxArrowRight />}>
+                            <MenuItem icon={<BsBoxArrowRight />} onClick={()=>(logOut())}>
                                 Logout
                             </MenuItem>
                         </Menu>
