@@ -11,7 +11,7 @@ import Product from "./Pages/Product";
 function App() {
   const [user, setUser] = useState();
   return (
-    <UserContext.Provider value={{ user: user, setUser }}>
+    <UserContext.Provider value={{ user: user || JSON.parse(localStorage.getItem("user")), setUser }}>
       <BrowserRouter>
         <GlobalStyles />
         <Switch>

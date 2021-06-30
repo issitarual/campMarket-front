@@ -14,7 +14,7 @@ import { useContext } from 'react';
 function Sidebar({isOpen ,setIsOpen}){
     const {user} = useContext(UserContext);
     const history=useHistory();
-    
+    console.log(user);
     function logOut(){
        if (!user) return;
        const config = {
