@@ -6,6 +6,7 @@ import Products from "./Pages/Products";
 import Login from "./Pages/Login";
 import SignUp from "./Pages/SignUp";
 import Category from "./Pages/Category";
+import Product from "./Pages/Product";
 
 function App() {
   const [user, setUser] = useState();
@@ -21,10 +22,13 @@ function App() {
             <Category name={"vegetables"}/>
           </Route>
           <Route path="/cold">
-            <Category name={"cold products"}/>
+            <Category name={"cold products"} exact/>
           </Route>
           <Route path="/meat">
-            <Category name={"meat"}/>
+            <Category name={"meat"} exact/>
+          </Route>
+          <Route path="/product/:productId" exact>
+            <Product/>
           </Route>
         </Switch>
       </BrowserRouter>
