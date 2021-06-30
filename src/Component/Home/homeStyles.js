@@ -111,6 +111,7 @@ const ProductContainer = styled.div`
     font-size: 15px;
     font-family: 'Roboto', sans-serif;
     background-color: #fff;
+    cursor: pointer;
     @media (max-width: 750px){
         margin: auto;
     }
@@ -118,13 +119,11 @@ const ProductContainer = styled.div`
         width: 210px;
         height: 210px;
         margin-bottom: 5px;
-        cursor: pointer;
     }
     h6{
         color: #4A4A4A;
         margin-bottom: 5px;
         text-align: center;
-        cursor: pointer;
     }
     p{
         font-weight: bold;
@@ -140,7 +139,6 @@ const ProductContainer = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-        cursor: pointer;
     }
     span{
         color: #fff;
