@@ -50,6 +50,12 @@ const Local = styled.div`
         height: 20px;
         margin-left: 5px;
     }
+    span{
+        display: flex;
+        @media (max-width: 450px){
+            flex-direction: column;
+        }
+    }
 `;
 
 const Transportation = styled.div`
