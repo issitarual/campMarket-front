@@ -17,13 +17,9 @@ function App() {
         <GlobalStyles />
         <Switch>
           <Route path="/" exact component={Products} />
-<<<<<<< HEAD
-          <Route path="/vegetables" exact>
-=======
           <Route path="/Login" exact component={Login} />
           <Route path="/SignUp" exact component={SignUp} />
           <Route path="/vegetables">
->>>>>>> main
             <Category name={"vegetables"}/>
           </Route>
           <Route path="/cold">
