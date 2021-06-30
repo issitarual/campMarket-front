@@ -1,6 +1,15 @@
 
 import styled from 'styled-components';
+import {useEffect,useRef} from 'react'
 export default function Account({user,edit,setEdit,clicked,text,loading}){
+
+    const inputRef=useRef();
+
+    useEffect(() => {
+        if (clicked) {
+          inputRef.current.focus()
+          }    
+      }, [clicked]);
 
 
     function handleChange(e) {
@@ -15,7 +24,7 @@ return(
             <span>{text}:</span>     
             {clicked?
             <input
-           ///ref={inputRef}
+            ref={inputRef}
             placeholder=""
             value={edit}
             disabled={loading}
