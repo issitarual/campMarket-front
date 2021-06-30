@@ -61,7 +61,7 @@ strong{
 
 //Config Sidebar
 #header{
-    position: absolute;
+    position: fixed;
     left: 0;
     min-width: 200px;
 }
@@ -113,6 +113,18 @@ strong{
         background-color: #b3e4e1;
     }
 }
+
+.debounceInput{
+    height: 50px;
+    outline: none;
+    border-radius: 5px;
+    background-color: #b3e4e1;
+    border: none;
+    padding-left: 10px;
+    font-size: 18px;
+    text-align: center;
+}
+
 
 @media (max-width: 450px){
     #header{

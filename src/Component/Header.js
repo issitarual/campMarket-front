@@ -6,7 +6,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { IconContext } from 'react-icons'
 import 'react-pro-sidebar/dist/css/styles.css';
-import axios from "axios";
 import Loader from "react-loader-spinner";
 
 function Header({isOpen ,setIsOpen}){
@@ -76,6 +75,10 @@ const Main = styled.div`
 @media (max-width: 450px){
         position: fixed;
         display: flex;
+        position: fixed;
+        width: 100%;
+        top: 50px;
+        left: 0;
         flex-direction: column;
 }
 `
