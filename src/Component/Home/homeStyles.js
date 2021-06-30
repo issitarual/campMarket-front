@@ -101,6 +101,7 @@ const Category = styled.div`
 const ProductContainer = styled.div`
     border: 2px solid #ccc;
     width: 230px;
+    height: 350px;
     border-radius: 5px;
     padding: 15px 10px;
     display: flex;
@@ -149,6 +150,7 @@ const ProductContainer = styled.div`
 `;
 
 const FooterContainer = styled.footer`
+    margin-top: 20px;
     height: 150px;
     border-top: solid 2px #ccc;
     display: flex;
