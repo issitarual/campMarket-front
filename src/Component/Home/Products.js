@@ -14,7 +14,7 @@ export default function Products({type, products}){
                 </button>
             </Category>
             <AllProducts>
-                {products.map(n => <EachProduct product={n}/>)}
+                {products.map((n,i) => <EachProduct key={i} product={n}/>)}
             </AllProducts>
         </>
     )

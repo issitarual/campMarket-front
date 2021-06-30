@@ -10,13 +10,38 @@ import axios  from 'axios';
 import UserContext from "../Context/UserContext";
 import { useHistory } from "react-router";
 import { useContext } from 'react';
-
+import {DebounceInput} from 'react-debounce-input';
 
 function Header(){
-    const [ clicked, setClicked ] = useState(false);
+    const {user} = useContext(UserContext);
+    const [ showProducts, setShowProducts ] = useState(false);
+    const [ showSearch, setShowSearch ] = useState(false);
+    const [searchText, setSearchText] = useState("");
+    const [showResult, setShowResult] = useState(false);
+    const [productsList, setProductsList] = useState([]);
+    const history=useHistory();
 
-    const {user,setUser} = useContext(UserContext);
-const history=useHistory();  
+    function AttemptToSearch(e){
+        if(e.target.value.length === 0){
+            setProductsList([]);
+            return
+          } 
+          const req = axios.get(`http://localhost:4000/search?search=${e.target.value}`);
+          req.then(({data})=>{
+            setShowResult(true);
+            setProductsList(data);
+          });
+          req.catch((err)=>{
+            alert("Something wrong happened!")
+        });
+    }
+
+    function goToProduct(id){
+        setShowSearch(false);
+        setSearchText("");
+        setProductsList([]);
+        history.push(`/product/${id}`);
+      }
 
     function logOut(){
       if (!user) return;
@@ -40,6 +65,7 @@ const history=useHistory();
           });
     }
 
+
     return(
         <>
             <IconContext.Provider value>
@@ -54,11 +80,11 @@ const history=useHistory();
                         <Link to={"/profile"}>
                             <BsFillPersonFill style={{width: "25px", height: "25px"}}/>
                         </Link>
-                        <IoFastFoodSharp onClick={()=>setClicked(!clicked)} style={{width: "25px", height: "25px"}}/>
-                        <BsSearch style={{width: "25px", height: "25px"}}/>
+                        <IoFastFoodSharp onClick={()=>{setShowSearch(false);setShowProducts(!showProducts)}} style={{width: "25px", height: "25px"}}/>
+                        <BsSearch onClick={()=>{setShowProducts(false);setShowSearch(!showSearch)}} style={{width: "25px", height: "25px"}}/>
                         <BsBoxArrowRight style={{width: "25px", height: "25px"}} onClick={()=>(logOut())}/>
                     </Container>
-                    <ProductsMenu click={clicked} >
+                    <ProductsMenu showProducts={showProducts} >
                         <Link to={"/vegetables"}>
                             <p>Vegetables</p>
                         </Link>
@@ -69,6 +95,31 @@ const history=useHistory();
                             <p>Cold Products</p>
                         </Link>
                     </ProductsMenu>
+                    <Search showSearch={showSearch}>
+                            <ResultMenu>
+                                <DebounceInput 
+                                    type="text"
+                                    value={searchText}
+                                    debounceTimeout={300}
+                                    className="debounceInputHeader"
+                                    onChange={(e)=>{AttemptToSearch(e);setSearchText(e.target.value)}}
+                                    placeholder="Search bar"
+                                />
+                                <Result showResult={showResult}>
+                                    {productsList.length ? 
+                                        productsList.map((p,i) =>(
+                                            <Item key={i} onClick={()=>goToProduct(p.id)}>
+                                                <img src={p.image} alt={p.name}></img>
+                                                <span>{p.name}</span>
+                                            </Item>
+                                        ))
+                                        :
+                                        <span></span>
+                                    }
+                                </Result>
+                            </ResultMenu>
+                            <Button onClick={()=>{setSearchText("");setShowSearch(false);setProductsList([]);}}>Cancel</Button>
+                    </Search>
                 </Main>
             </IconContext.Provider>
         </>
@@ -79,6 +130,7 @@ const Main = styled.div`
     display: none;
     font-family: 'Roboto', sans-serif;
 @media (max-width: 450px){
+        position: fixed;
         display: flex;
         position: fixed;
         width: 100%;
@@ -102,7 +154,7 @@ const Container = styled.div`
 `
 
 const ProductsMenu = styled.div`
-    display: ${props => props.click === true ? "flex" : "none"};
+    display: ${props => props.showProducts ? "flex" : "none"};
     width: 100vw;
     height: 150px;
     background-color: #fff;
@@ -110,6 +162,57 @@ const ProductsMenu = styled.div`
     p{
         padding: 105px 20px 0px 20px;
     }
+`
+
+const Search = styled.div`
+    display: ${props => props.showSearch === true ? "flex" : "none"};
+    width: 100vw;
+    height: fit-content;
+    padding-bottom: 10px;
+    background-color: #fff;
+    justify-content: space-between;
+    padding-top: 95px;
+    justify-content: center;
+    border-radius:5px;
+`
+
+const Result = styled.div`
+  display: ${props => props.showResult ? "flex" : "none"};
+  flex-direction: column;
+  width: 100%;
+  background-color: #fff;
+  height: fit-content;
+  gap: 10px;
+  span {
+    color: #515151;
+    font-size: 17px;
+    padding-left: 5px;
+  }
+`
+
+const ResultMenu = styled.div`
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+`
+
+const Item = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  img{
+    width: 40px;
+  }
+`
+
+const Button = styled.button`
+    width: 60px;
+    height: 35px;
+    margin-left: 10px;
+    border: none;
+    background-color: #b3e4e1;
+    border-radius: 5px;   
 `
 
 export default Header;

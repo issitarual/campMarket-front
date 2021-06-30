@@ -5,11 +5,11 @@ const Container = styled.div`
     flex-direction: column;
     margin-top: 50px;
     padding-right: 30px;
-    padding-left: 30px;
-    margin-left: 200px;
+    padding-left: 230px;
     @media (max-width: 450px){
+        padding-left: 30px;
         margin-left: 0;
-        margin-top: 100px;
+        margin-top: 130px;
     }
 `;
 

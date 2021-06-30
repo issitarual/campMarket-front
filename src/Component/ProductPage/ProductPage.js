@@ -1,5 +1,4 @@
 import { Container, Product } from './ProductStyles';
-import { useState } from 'react';
 
 import Footer from '../Home/Footer';
 

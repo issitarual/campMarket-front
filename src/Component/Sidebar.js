@@ -1,6 +1,7 @@
 import { BsSearch, BsFillPersonFill, BsBoxArrowRight } from 'react-icons/bs';
 import { IoFastFoodSharp } from "react-icons/io5";
 import { FiHome, FiShoppingCart } from 'react-icons/fi'
+import { CgLogIn } from 'react-icons/cg'
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import 'react-pro-sidebar/dist/css/styles.css';
@@ -10,11 +11,10 @@ import UserContext from "../Context/UserContext";
 import { useHistory } from "react-router";
 import { useContext } from 'react';
 
-function Sidebar(){
-
-const {user,setUser} = useContext(UserContext);
-const history=useHistory();  
-
+function Sidebar({isOpen ,setIsOpen}){
+    const {user} = useContext(UserContext);
+    const history=useHistory();
+    
     function logOut(){
        if (!user) return;
        const config = {
@@ -36,8 +36,6 @@ const history=useHistory();
             alert("Falha ao sair!")
           });
     }
-
-
 
     return(
         <>
@@ -74,16 +72,23 @@ const history=useHistory();
                                     <Link to={"/cold"} />
                                 </MenuItem>
                             </SubMenu>
-                            <MenuItem icon={<BsSearch />}>
+                            <MenuItem onClick={()=>setIsOpen(!isOpen)} icon={<BsSearch />}>
                                 Search
                             </MenuItem>
                         </Menu>
                     </SidebarContent>
                     <SidebarFooter>
                         <Menu>
+                            {user ? 
                             <MenuItem icon={<BsBoxArrowRight />} onClick={()=>(logOut())}>
                                 Logout
                             </MenuItem>
+                            :
+                            <MenuItem icon={<CgLogIn />} >
+                                Login
+                                <Link to={"/Login"}/>
+                            </MenuItem>
+                            }
                         </Menu>
                     </SidebarFooter>
                 </ProSidebar>
