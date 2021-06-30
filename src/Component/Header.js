@@ -12,8 +12,7 @@ import { useHistory } from "react-router";
 import { useContext } from 'react';
 import {DebounceInput} from 'react-debounce-input';
 
-
-function Header({isOpen ,setIsOpen}){
+function Header(){
     const {user} = useContext(UserContext);
     const [ showProducts, setShowProducts ] = useState(false);
     const [ showSearch, setShowSearch ] = useState(false);
@@ -36,6 +35,13 @@ function Header({isOpen ,setIsOpen}){
             alert("Something wrong happened!")
         });
     }
+
+    function goToProduct(id){
+        setShowSearch(false);
+        setSearchText("");
+        setProductsList([]);
+        history.push(`/product/${id}`);
+      }
 
     function logOut(){
       if (!user) return;
@@ -102,9 +108,9 @@ function Header({isOpen ,setIsOpen}){
                                 <Result showResult={showResult}>
                                     {productsList.length ? 
                                         productsList.map((p,i) =>(
-                                            <Item key={i}>
-                                            <img src={p.image} alt={p.name}></img>
-                                            <span>{p.name}</span>
+                                            <Item key={i} onClick={()=>goToProduct(p.id)}>
+                                                <img src={p.image} alt={p.name}></img>
+                                                <span>{p.name}</span>
                                             </Item>
                                         ))
                                         :
