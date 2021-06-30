@@ -9,7 +9,7 @@ const Container = styled.div`
     margin-left: 200px;
     @media (max-width: 450px){
         margin-left: 0;
-        margin-top: 130px;
+        margin-top: 105px;
     }
     h1{
         font-size: 20px;
@@ -18,6 +18,9 @@ const Container = styled.div`
         font-weight: bold;
         letter-spacing: 1px;
         margin-top: 20px;
+        @media (max-width: 450px){
+            text-align: center;
+        }
     }
     div{
         display: flex;
