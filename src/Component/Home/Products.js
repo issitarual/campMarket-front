@@ -66,9 +66,9 @@ export default function Products({type, products}){
     )
     function goToCategory(){
         if(type === "cold products"){
-            history.push("/cold");
+            history.push("/category/cold");
             return;
         }
-        history.push(`/${type}`);
+        history.push(`/category/${type}`);
     }
 }

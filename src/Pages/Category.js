@@ -6,7 +6,7 @@ import SearchFeature from "../Component/SearchFeature";
 import CategoryPage from "../Component/CetegoryPage/CategoryPage";
 
 import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 function Category() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,11 +23,11 @@ function Category() {
   );
 }
 
+
 const Main = styled.div`
   background-image: linear-gradient(#f6e9c7, #b3e4e1);
   width: 100%;
   height: 100%;
-  min-height: calc(100vh - 50px);
   font-family: 'Roboto', sans-serif;
 `;
 

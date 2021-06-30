@@ -18,7 +18,7 @@ function App() {
           <Route path="/" exact component={Products} />
           <Route path="/Login" exact component={Login} />
           <Route path="/SignUp" exact component={SignUp} />
-          <Route path="/:categoryName" exact component={Category}/>
+          <Route path="/category/:categoryName" exact component={Category}/>
           <Route path="/product/:productId" exact component={Product}/>
         </Switch>
       </BrowserRouter>
