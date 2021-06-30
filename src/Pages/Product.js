@@ -10,13 +10,14 @@ import axios from 'axios';
 
 export default function Product(){
     const { productId } = useParams();
-    const [product, setProduct] = useState(null);
+    const [product, setProduct] = useState({name: "", description: "", price: 0, image: ""});
     useEffect(() => {
         const request = axios.get(`http://localhost:4000/products/${productId}`);
 
         request.then(success => setProduct(success.data));
         request.catch(error => alert("Algo deu errado, tente mais tarde!"));
     },[]);
+    
     return(
         <Main>
             <Header />
