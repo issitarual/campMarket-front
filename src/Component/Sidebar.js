@@ -16,6 +16,7 @@ const {user,setUser} = useContext(UserContext);
 const history=useHistory();  
 
     function logOut(){
+       if (!user) return;
        const config = {
             headers: {
               Authorization: `Bearer ${user.token}`,
@@ -29,7 +30,6 @@ const history=useHistory();
           request.then((response) => {
             localStorage.removeItem("user") 
               history.push("/Login")
-              console.log(response)
           });
       
           request.catch((error) => {
