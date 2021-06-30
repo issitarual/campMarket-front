@@ -145,6 +145,7 @@ const Button = styled.button`
   border: none;
   background-color: #b3e4e1;
   border-radius: 5px;
-`
+`;
+
 
 export default Products;
