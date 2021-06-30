@@ -2,14 +2,12 @@ import styled from "styled-components";
 import Header from "../Component/Header";
 import Sidebar from "../Component/Sidebar";
 
-import Home from "../Component/Home/Home";
-
-function Products() {
+function Category({name}) {
   return (
     <Main>
         <Header />
+        <p>{name}</p>
         <Sidebar />
-        <Home />
     </Main>
   );
 }
@@ -18,7 +16,6 @@ const Main = styled.div`
   background-image: linear-gradient(#f6e9c7, #b3e4e1);
   width: 100vw;
   height: 100%;
-  min-height: calc(100vh - 50px);
 `;
 
-export default Products;
+export default Category;

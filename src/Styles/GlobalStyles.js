@@ -62,6 +62,7 @@ strong{
 //Config Sidebar
 #header{
     position: fixed;
+    top: 50px;
     left: 0;
     min-width: 200px;
 }
@@ -77,7 +78,7 @@ strong{
 
 //Sidebar size
 #header .pro-sidebar {
-    height: 100vh;
+    height: calc(100vh - 50px);
     min-width: 200px;
 }
 

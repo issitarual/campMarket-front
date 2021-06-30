@@ -9,7 +9,7 @@ const Container = styled.div`
     margin-left: 200px;
     @media (max-width: 450px){
         margin-left: 0;
-        margin-top: 110px;
+        margin-top: 100px;
     }
 `;
 
@@ -145,5 +145,71 @@ const ProductContainer = styled.div`
     }
 `;
 
+const FooterContainer = styled.footer`
+    height: 150px;
+    border-top: solid 2px #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media (max-width: 770px){
+        flex-direction: column;
+        height: 300px;
+    }
+`; 
 
-export {DeliveryContainer, Local, Transportation, Container, Category, ProductContainer, AllProducts}
+const Logo = styled.div`
+    display: flex;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    color: #3F3F40;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    @media (max-width: 770px){
+        margin-top: 10px;
+    }
+`;
+
+const CreditCard = styled.div`
+    h5{
+        font-family: 'Roboto', sans-serif;
+        text-align: center;
+        color: #3F3F40;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    img{
+        width: 200px;
+    }
+    @media (max-width: 770px){
+        margin-top: 10px;
+    }
+`;
+
+const Media = styled.div`
+    p{
+        font-family: 'Roboto', sans-serif;
+        text-align: center;
+        color: #3F3F40;
+        font-size: 16px;
+        margin-bottom: 10px;   
+    }
+    span{
+        display: flex;
+        justify-content: space-between;
+    }
+    div{
+        background-color: #3F3F40;
+        padding: 10px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+    @media (max-width: 770px){
+        margin: 10px 0px 20px 0px;
+    }
+`;
+
+export {DeliveryContainer, Local, Transportation, Container, Category, ProductContainer, AllProducts, FooterContainer, CreditCard, Logo, Media}
