@@ -130,6 +130,7 @@ const Main = styled.div`
     display: none;
     font-family: 'Roboto', sans-serif;
 @media (max-width: 450px){
+        z-index: 10;
         position: fixed;
         display: flex;
         position: fixed;

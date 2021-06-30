@@ -32,7 +32,7 @@ export default function Product(){
 
 const Main = styled.div`
   background-image: linear-gradient(#f6e9c7, #b3e4e1);
-  width: 100vw;
+  width: 100%;
   height: 100%;
   min-height: calc(100vh - 50px);
   font-family: 'Roboto', sans-serif;

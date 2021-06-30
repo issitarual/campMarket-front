@@ -9,7 +9,7 @@ export default function EachProduct({product}){
             <img src={image} alt={name} onClick={()=> goToProduct(id)}/>
             <h6 onClick={()=> goToProduct(id)}>{name}</h6>
             <p>por R${price}</p>
-            <button onClick={() => goToProduct(id)}>
+            <button onClick={() => alert("Vai pro carrinho")}>
                 <span> Add +</span>
             </button>
         </ProductContainer>

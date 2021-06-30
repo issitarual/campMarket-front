@@ -6,6 +6,9 @@ const Container = styled.div`
     margin-top: 50px;
     padding-right: 30px;
     padding-left: 230px;
+    .carousel-container{
+        z-index: 0;
+    }
     @media (max-width: 450px){
         padding-left: 30px;
         margin-left: 0;
@@ -24,6 +27,7 @@ const DeliveryContainer = styled.header`
     width: 100%;
     height: 50px;
     background-color: #fff;
+    z-index: 10;
 `;
 
 const Local = styled.div`
@@ -88,21 +92,11 @@ const Category = styled.div`
     }
 `;
 
-const AllProducts = styled.div`
-    display: flex;
-    margin-bottom: 20px; 
-    justify-content: space-between;
-    @media (max-width: 1230px){
-        overflow-x: scroll;
-    }
-`;
-
 const ProductContainer = styled.div`
     border: 2px solid #ccc;
     width: 230px;
     border-radius: 5px;
     padding: 15px 10px;
-    margin-right: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -110,6 +104,9 @@ const ProductContainer = styled.div`
     font-size: 15px;
     font-family: 'Roboto', sans-serif;
     background-color: #fff;
+    @media (max-width: 750px){
+        margin: auto;
+    }
     img{
         width: 210px;
         height: 210px;
@@ -212,4 +209,4 @@ const Media = styled.div`
     }
 `;
 
-export {DeliveryContainer, Local, Transportation, Container, Category, ProductContainer, AllProducts, FooterContainer, CreditCard, Logo, Media}
+export {DeliveryContainer, Local, Transportation, Container, Category, ProductContainer, FooterContainer, CreditCard, Logo, Media}

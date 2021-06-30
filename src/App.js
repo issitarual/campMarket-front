@@ -18,18 +18,8 @@ function App() {
           <Route path="/" exact component={Products} />
           <Route path="/Login" exact component={Login} />
           <Route path="/SignUp" exact component={SignUp} />
-          <Route path="/vegetables">
-            <Category name={"vegetables"}/>
-          </Route>
-          <Route path="/cold">
-            <Category name={"cold products"} exact/>
-          </Route>
-          <Route path="/meat">
-            <Category name={"meat"} exact/>
-          </Route>
-          <Route path="/product/:productId" exact>
-            <Product/>
-          </Route>
+          <Route path="/:categoryName" exact component={Category}/>
+          <Route path="/product/:productId" exact component={Product}/>
         </Switch>
       </BrowserRouter>
     </UserContext.Provider>
