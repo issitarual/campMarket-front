@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import Products from "./Pages/Products";
 import Category from "./Pages/Category";
+import Product from "./Pages/Product";
 
 function App() {
   const [user, setUser] = useState();
@@ -14,14 +15,17 @@ function App() {
         <GlobalStyles />
         <Switch>
           <Route path="/" exact component={Products} />
-          <Route path="/vegetables">
+          <Route path="/vegetables" exact>
             <Category name={"vegetables"}/>
           </Route>
           <Route path="/cold">
-            <Category name={"cold products"}/>
+            <Category name={"cold products"} exact/>
           </Route>
           <Route path="/meat">
-            <Category name={"meat"}/>
+            <Category name={"meat"} exact/>
+          </Route>
+          <Route path="/product/:productId" exact>
+            <Product/>
           </Route>
         </Switch>
       </BrowserRouter>
