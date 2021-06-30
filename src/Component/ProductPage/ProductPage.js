@@ -1,5 +1,6 @@
 import { Container, Product } from './ProductStyles';
 import Footer from '../Home/Footer';
+import Loading from '../Loading'
 
 import axios from 'axios';
 import { useState, useEffect } from 'react';
@@ -17,6 +18,7 @@ export default function ProductPage({productId}){
 
     return(
         <Container>
+            {product ===  {}? <Loading/>: null}
             <Product>
                 <img src={image} alt={name}/>
                 <div>

@@ -1,6 +1,8 @@
 import Delivery from "./Delivery";
 import Products from "./Products";
 import Footer from "./Footer";
+import Loading from "../Loading";
+
 import axios from 'axios';
 import { useEffect, useState } from "react";
 import { Container } from "./homeStyles";
@@ -23,6 +25,7 @@ export default function Home (){
     return(
         <Container>
             <Delivery/>
+            {products.length === 0? <Loading/>: null}
             <Products type={"vegetables"} products={vegetables}/>
             <Products type={"cold products"} products={coldProducts}/>
             <Products type={"meat"} products={meat}/>
