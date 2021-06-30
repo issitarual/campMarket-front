@@ -30,6 +30,7 @@ function signUP(e){
     setLoading(true);
 
     request.then((response) => {
+      setLoading(false);
       history.push("/Login");
     });
 

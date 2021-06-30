@@ -7,6 +7,7 @@ import Login from "./Pages/Login";
 import SignUp from "./Pages/SignUp";
 import Category from "./Pages/Category";
 import Product from "./Pages/Product";
+import Profile from "./Pages/Profile";
 
 function App() {
   const [user, setUser] = useState();
@@ -30,6 +31,7 @@ function App() {
           <Route path="/product/:productId" exact>
             <Product/>
           </Route>
+          <Route path="/profile" exact component={Profile} />
         </Switch>
       </BrowserRouter>
     </UserContext.Provider>
