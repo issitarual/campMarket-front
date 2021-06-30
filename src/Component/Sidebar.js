@@ -1,6 +1,7 @@
 import { BsSearch, BsFillPersonFill, BsBoxArrowRight } from 'react-icons/bs';
 import { IoFastFoodSharp } from "react-icons/io5";
 import { FiHome, FiShoppingCart } from 'react-icons/fi'
+import { CgLogIn } from 'react-icons/cg'
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import 'react-pro-sidebar/dist/css/styles.css';
@@ -11,9 +12,9 @@ import { useHistory } from "react-router";
 import { useContext } from 'react';
 
 function Sidebar({isOpen ,setIsOpen}){
-    const {user,setUser} = useContext(UserContext);
-    const history=useHistory();  
-
+    const {user} = useContext(UserContext);
+    const history=useHistory();
+    
     function logOut(){
        if (!user) return;
        const config = {
@@ -78,9 +79,16 @@ function Sidebar({isOpen ,setIsOpen}){
                     </SidebarContent>
                     <SidebarFooter>
                         <Menu>
+                            {user ? 
                             <MenuItem icon={<BsBoxArrowRight />} onClick={()=>(logOut())}>
                                 Logout
                             </MenuItem>
+                            :
+                            <MenuItem icon={<CgLogIn />} >
+                                Login
+                                <Link to={"/Login"}/>
+                            </MenuItem>
+                            }
                         </Menu>
                     </SidebarFooter>
                 </ProSidebar>

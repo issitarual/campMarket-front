@@ -116,6 +116,7 @@ strong{
 }
 
 .debounceInput{
+    width: 100%;
     height: 50px;
     outline: none;
     border-radius: 5px;
@@ -124,6 +125,16 @@ strong{
     padding-left: 10px;
     font-size: 18px;
     text-align: center;
+}
+
+.debounceInputHeader{
+    width: 75vw;
+    height: 35px;
+    outline: none;
+    border-radius: 5px;
+    background-color: #b3e4e1;
+    border: none;
+    padding-left: 10px;
 }
 
 

@@ -3,32 +3,29 @@ import Header from "../Component/Header";
 import Sidebar from "../Component/Sidebar";
 import { useState } from "react";
 import axios from "axios";
-import Loader from "react-loader-spinner";
 import Home from "../Component/Home/Home";
 import {DebounceInput} from 'react-debounce-input';
 
 function Products() {
   const [isOpen, setIsOpen] = useState(false);
-  const [disable, setDisable] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [showResult, setShowResult] = useState(false);
   const [productsList, setProductsList] = useState([]);
-  console.log(searchText)
 
   function AttemptToSearch(e){
-    e.preventDefault();
-    if(searchText.length === 0) return alert("Empty search bar!");
-    const body = {
-      searchText,
-    }
-    const request = axios.get('http://localhost:4000/products/search/',body);
-    request.then(({data}) =>{
+    if(e.target.value.length === 0){
+      setProductsList([]);
+      return
+    } 
+    const req = axios.get(`http://localhost:4000/search?search=${e.target.value}`);
+    req.then(({data})=>{
       setShowResult(true);
       setProductsList(data);
     });
-    // setDisable(true);
-    // alert("Feature ainda não implementada");
-}
+    req.catch((err)=>{
+      alert("Something wrong happened!")
+    });
+  }
 
   return (
     <Main>
@@ -37,23 +34,31 @@ function Products() {
       <Home />
       <SearchArea isOpen={isOpen}>
         <Search>
-          <DebounceInput 
+          <ResultMenu>
+            <DebounceInput 
               type="text"
-              disabled={disable}
               value={searchText}
-              minLength={2}
-              debounceTimeout={0}
+              debounceTimeout={300}
               className="debounceInput"
-              onChange={(e)=>{setSearchText(e.target.value)}}
+              onChange={(e)=>{AttemptToSearch(e);setSearchText(e.target.value)}}
               placeholder="Search bar"
-              onKeyPress={(e) => { if (e.code === "Enter"||e.code==="NumpadEnter") { AttemptToSearch(e) } }}
-          />
-          {/* <Result showResult={showResult}>
-          </Result> */}
-          <Buttons>
-            <Button onClick={(e)=>AttemptToSearch(e)}>{disable === true ? <Loader type="ThreeDots" color="#FFF" height={35} width={45}/> : "Search" }</Button>
-            <Button onClick={()=>{setIsOpen(false);setSearchText("")}}>{disable === true ? <Loader type="ThreeDots" color="#FFF" height={35} width={45}/> : "Cancel" }</Button>
-          </Buttons>
+            />
+            <Result showResult={showResult}>
+              {productsList.length ? 
+                productsList.map((p,i) =>(
+                  <Item key={i}>
+                    <img src={p.image} alt={p.name}></img>
+                    <span>{p.name}</span>
+                  </Item>
+                ))
+                :
+                <span></span>
+              }
+            </Result>
+          </ResultMenu>
+          <Button>
+            <button onClick={()=>{setSearchText("");setIsOpen(false);setProductsList([]);}}>Cancel</button>
+          </Button>
         </Search>
       </SearchArea>
     </Main>
@@ -72,12 +77,13 @@ const Main = styled.div`
 
 const SearchArea = styled.div`
   display: ${(props) => (props.isOpen ? "flex" : "none")};
-  justify-content: center;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
   width: 50vw;
-  height: 350px;
+  height: fit-content;
   position: fixed;
+  padding: 20px 0px;
   top: 0;
   bottom: 0;
   margin-top: auto;
@@ -97,55 +103,45 @@ const Search = styled.div`
   flex-direction: column;
 `
 
-const Buttons = styled.div`
+const Button = styled.div`
   display: flex;
-  padding-top: 70px;
-  justify-content: space-between;
-`
-
-const Result = styled.div`
-  display: ${props => props.showResult ? "flex" : "none"};
-  /* position: absolute;
-  top: 39px;
-  z-index: -1;
-  left: 0;
-  width: 100%;
-  background-color: #E5E5E5;
-  border-radius: 0 0 8px 8px;
-  padding: 20px 17px 23px 17px;
-  flex-direction: column;
-  gap: 16px;
-  box-shadow: 0 0 10px rgba(0,0,0,.5);
-  max-height: 500px;
-  overflow-y: scroll;
-  scrollbar-width: thin;
-  scrollbar-color: #e5e5e5 #151515; */
-  span {
-      color: #515151;
-      font-size: 17px;
-  }
-  /* Works on Chrome, Edge, and Safari
-  &::-webkit-scrollbar {
-  width: 10px;
-  }
-  &::-webkit-scrollbar-track {
-  background: none;
-  }
-  &::-webkit-scrollbar-thumb {
-  background-color: #151515;
-  border: 3px solid #151515;
-  border-radius: 10px;
-  } */
-
-`
-
-const Button = styled.button`
-  width: 45%;
+  padding-top: 50px;
+  justify-content: center;
+  button{
+    width: 45%;
   height: 35px;
   border: none;
   background-color: #b3e4e1;
   border-radius: 5px;
-`;
+  }
+`
 
+const Result = styled.div`
+  display: ${props => props.showResult ? "flex" : "none"};
+  flex-direction: column;
+  width: 100%;
+  background-color: #fff;
+  height: fit-content;
+  gap: 10px;
+  span {
+    color: #515151;
+    font-size: 17px;
+    padding-left: 5px;
+  }
+`
+
+const ResultMenu = styled.div`
+
+`
+
+const Item = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  img{
+    width: 40px;
+  }
+`
 
 export default Products;

@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 import Loader from "react-loader-spinner";
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { useHistory } from "react-router";
-import UserContext from "../Context/UserContext";
 
 function SignUp(){
 
-const {setUser} = useContext(UserContext);
 const history=useHistory();     
 const [loading,setLoading]=useState(false);
 const [name,setName]=useState("");
