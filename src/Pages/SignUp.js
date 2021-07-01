@@ -30,6 +30,7 @@ function signUP(e){
     setLoading(true);
 
     request.then((response) => {
+      setLoading(false);
       history.push("/Login");
     });
 
@@ -132,7 +133,6 @@ const Logo = styled.div`
     height: 60px;
     font-size: 40px;
     color: #000;
-    font-weight: bold;
     align-items: center;
     justify-content: center;
     text-align: center;
