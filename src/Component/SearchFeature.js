@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import axios from "axios";
-import {DebounceInput} from 'react-debounce-input';
+import DebounceInput from 'react-debounce-input';
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 

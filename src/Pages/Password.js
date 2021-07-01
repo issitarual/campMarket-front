@@ -1,51 +1,54 @@
+import { useState } from 'react';
+import { useHistory } from 'react-router';
 import styled from 'styled-components';
 import Loader from 'react-loader-spinner';
-import { useState, useContext } from 'react';
 import axios from 'axios';
-import { useHistory } from "react-router";
-import UserContext from "../Context/UserContext";
 
-function Login(){
-
-const {setUser} = useContext(UserContext);
-const history=useHistory();     
-const [loading,setLoading]=useState(false);
+export default function Password(){
 const [email,setEmail]=useState("");
 const [password,setPassword]=useState("");
+const [confirmPassword,setConfirmPassword]=useState("");
+const [loading,setLoading]=useState("");
+const history=useHistory();
 
-function login(e){
+function ChangePassword (e){
     e.preventDefault();
-    const body = { email, password };
-    const request = axios.post(
-      "http://localhost:4000/Login",
+
+    if(password!==confirmPassword){
+      alert("Passwords do not match, check again ");
+      return;
+    }
+    
+    const body = { email, password, confirmPassword };
+    const request = axios.put(
+      "http://localhost:4000/change_password",
       body
     );
 
     setLoading(true);
 
     request.then((response) => {
-
-      setUser(response.data);
-      localStorage.setItem("user", JSON.stringify(response.data));
-      history.push("/");
+      setLoading(false);
+      alert("password was successfully changed!");
+      history.push("/Login");
     });
 
     request.catch((error) => {
-        setLoading(false);
-        if(error.response.status===401) alert("Falha no login, email ou senha incorretos!");
-     
+      setLoading(false);
+      if(error.response.status===404) alert("Email address is not registered!");
+      else alert(" Unable to update the password")
     });
-} 
+}     
 
 
     return(
-<>
-<Body>
-<Logo>CampMarket</Logo>
+        <Body>
+        <Logo>CampMarket</Logo>
 
+        <h1>Mudar Senha</h1>
+  
 
-
-<form onSubmit={login}>
+        <form onSubmit={ChangePassword}>
 
 <Info>
 <input
@@ -66,57 +69,68 @@ onChange={e => setPassword(e.target.value)}
 disabled={loading}
 />  
 
-<div onClick={()=>(history.push("/change_password"))}><span class="password">Esqueceu a senha?</span></div>
+<input
+type="password"
+required
+placeholder="Confirmar Senha"
+value={confirmPassword} 
+onChange={e => setConfirmPassword(e.target.value)} 
+disabled={loading}
+/> 
 
 
 <button  type="submit" required isdisabled={loading} >
- {!loading ? "Entrar" : <Loader type="ThreeDots" color="#FFF" height={45} width={50}/>}
+ {!loading ? "Enviar" : <Loader type="ThreeDots" color="#FFF" height={45} width={50}/>}
 </button> 
+
+<span onClick={()=>(history.push("/Login"))} class="password">Voltar para o login</span>
 
 </Info>
 </form>
 
-<span onClick={()=>(history.push("/SignUp"))}> Primeira vez? Crie uma conta!</span>
-
-</Body>
-</>
-
-    );
-
+    </Body>
+    )
 }
 
-const Body =styled.div `
-  background-image: linear-gradient(#f6e9c7, #b3e4e1);
+const Body = styled.div `
+ background-image: linear-gradient(#f6e9c7, #b3e4e1); 
+  padding:30px;
   width: 100vw;
   height: 100vh;
-  display:flex;
-  align-items:center;
+  display: flex;
   flex-direction: column;
-div{
+  align-items: center;
+
+  h1{
+    margin-top:50px;
+    margin-bottom:30px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
     display: flex;
-    align-items: flex-start;
+    font-size: 40px;
+    color: #696969;
+    text-align: center;    
+  }
+
+
     span{
-        text-decoration-line: none;
-        color:#5F9EA0;
-    }
-}
-span{
-    cursor:pointer;
+        cursor:pointer;
     color: grey;
     font-size: 20px;
     text-decoration-line: underline;
+    }
 
-}
+
 `;
 
 const Logo = styled.div`
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
-    margin:50px;
     display: flex;
     height: 60px;
-    font-size: 40px;
+    font-size: 35px;
     color: #000;
+    font-weight: bold;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -124,7 +138,6 @@ const Logo = styled.div`
 `;
 
 const Info =styled.div ` 
-
 display: flex;
 flex-direction:column ;
 align-items: center;
@@ -170,6 +183,3 @@ button{
 }
 }
 `;
-
-
-export default Login;

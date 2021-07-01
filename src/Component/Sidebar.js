@@ -14,6 +14,7 @@ import { useContext } from 'react';
 function Sidebar({isOpen ,setIsOpen}){
     const {user} = useContext(UserContext);
     const history=useHistory();
+
     
     function logOut(){
        if (!user) return;
@@ -56,9 +57,9 @@ function Sidebar({isOpen ,setIsOpen}){
                             </MenuItem>
                             <MenuItem icon={<BsFillPersonFill />}>
                                 Perfil
-                                <Link to={"/profile"} />
+                                <Link to={user?"/profile":"/Login"} />
                             </MenuItem>
-                            <SubMenu icon={<IoFastFoodSharp />} title="Produtos">
+                            <SubMenu icon={<IoFastFoodSharp />} title="Categorias">
                                 <MenuItem>
                                     <p>Hortifruti</p>
                                     <Link to={"/category/vegetables"} />

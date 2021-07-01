@@ -18,7 +18,7 @@ export default function ProductPage({productId}){
 
     return(
         <Container>
-            {product ===  {}? <Loading/>: null}
+            {product ===  {}? <Loading page={"each product"}/>: null}
             <Product>
                 <img src={image} alt={name}/>
                 <div>

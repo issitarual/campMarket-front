@@ -17,7 +17,7 @@ function signUP(e){
     e.preventDefault();
 
     if(password!==confirmPassword){
-      alert("Passwords do not match, check again ");
+      alert("As senhas são diferentes, tente novamente");
       return;
     }
     
@@ -30,13 +30,14 @@ function signUP(e){
     setLoading(true);
 
     request.then((response) => {
+      setLoading(false);
       history.push("/Login");
     });
 
     request.catch((error) => {
-     if(error.response.status===409) alert("Email address already registered!");
+     if(error.response.status===409) alert("E-mail já cadastrado!");
       
-      else alert("Login Failed - Email or Password is Incorrect");
+      else alert("Falha - E-mail e/ou senha incorretos");
       setLoading(false);
     });
 }        
@@ -57,7 +58,7 @@ function signUP(e){
 <input
 type="text"
 required
-placeholder="Name"
+placeholder="Nome"
 value={name} 
 onChange={e => setName(e.target.value)} 
 disabled={loading}
@@ -76,7 +77,7 @@ disabled={loading}
 <input
 type="password"
 required
-placeholder="Password"
+placeholder="Senha"
 value={password} 
 onChange={e => setPassword(e.target.value)} 
 disabled={loading}
@@ -85,7 +86,7 @@ disabled={loading}
 <input
 type="password"
 required
-placeholder="Confirm password"
+placeholder="Confirmar Senha"
 value={confirmPassword} 
 onChange={e => setConfirmPassword(e.target.value)} 
 disabled={loading}
@@ -93,13 +94,13 @@ disabled={loading}
 
 
 <button  type="submit" required isdisabled={loading} >
- {!loading ? "Sign Up" : <Loader type="ThreeDots" color="#FFF" height={45} width={50}/>}
+ {!loading ? "Registrar" : <Loader type="ThreeDots" color="#FFF" height={45} width={50}/>}
 </button> 
 
 </Info>
 </form>
 
-<span onClick={()=>(history.push("/Login"))}> Switch back to log in</span>
+<span onClick={()=>(history.push("/Login"))}>Voltar para o login</span>
 
 </Body>
 </>
@@ -132,7 +133,6 @@ const Logo = styled.div`
     height: 60px;
     font-size: 40px;
     color: #000;
-    font-weight: bold;
     align-items: center;
     justify-content: center;
     text-align: center;

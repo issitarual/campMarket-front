@@ -23,11 +23,11 @@ export default function CategoryPage({name}){
                 name === "cold products"? "FRIOS E LATICÍNIOS":
                 null}
             </h1>
-            {products.length === 0? <Loading/>: null}
+            {products.length === 0? <Loading page={"product"}/>: null}
             <div>
                 {products.map((n,i) => <EachProduct key={i} product={n}/>)}
             </div>
-            <Footer/>
+            <Footer page={"category"}/>
         </Container>
     )
 }

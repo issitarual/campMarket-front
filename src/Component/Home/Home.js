@@ -26,11 +26,11 @@ export default function Home (){
         <Container>
             <Delivery/>
             <Products type={"vegetables"} products={vegetables}/>
-            {products.length === 0? <Loading/>: null}
+            {products.length === 0? <Loading page={"home"}/>: null}
             <Products type={"cold products"} products={coldProducts}/>
-            {products.length === 0? <Loading/>: null}
+            {products.length === 0? <Loading page={"home"}/>: null}
             <Products type={"meat"} products={meat}/>
-            {products.length === 0? <Loading/>: null}
+            {products.length === 0? <Loading page={"home"}/>: null}
             <Footer/>
         </Container>
     )

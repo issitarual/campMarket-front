@@ -162,7 +162,7 @@ const FooterContainer = styled.footer`
     justify-content: space-between;
     @media (max-width: 770px){
         flex-direction: column;
-        height: 300px;
+        height: ${props => props.page === "category"? "350px": "300px"}
     }
 `; 
 
@@ -180,6 +180,9 @@ const Logo = styled.div`
 `;
 
 const CreditCard = styled.div`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     h5{
         font-family: 'Roboto', sans-serif;
         text-align: center;
@@ -196,12 +199,15 @@ const CreditCard = styled.div`
 `;
 
 const Media = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     p{
         font-family: 'Roboto', sans-serif;
         text-align: center;
         color: #3F3F40;
         font-size: 16px;
-        margin-bottom: 10px;   
+        margin-bottom: ${props => props.page === "category"? "0px": "10px"};   
     }
     span{
         display: flex;
