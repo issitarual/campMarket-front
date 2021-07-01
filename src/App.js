@@ -8,6 +8,7 @@ import SignUp from "./Pages/SignUp";
 import Category from "./Pages/Category";
 import Product from "./Pages/Product";
 import Profile from "./Pages/Profile";
+import Password from "./Pages/Password";
 
 function App() {
   const [user, setUser] = useState();
@@ -32,6 +33,8 @@ function App() {
             <Product/>
           </Route>
           <Route path="/profile" exact component={Profile} />
+          <Route path="/change_password" exact component={Password} />
+
         </Switch>
       </BrowserRouter>
     </UserContext.Provider>
