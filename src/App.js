@@ -17,26 +17,14 @@ function App() {
       <BrowserRouter>
         <GlobalStyles />
         <Switch>
-          <Route path="/" exact component={Products} />
+        <Route path="/" exact component={Products} />
           <Route path="/Login" exact component={Login} />
           <Route path="/SignUp" exact component={SignUp} />
-          <Route path="/vegetables">
-            <Category name={"vegetables"}/>
-          </Route>
-          <Route path="/cold">
-            <Category name={"cold products"} exact/>
-          </Route>
-          <Route path="/meat">
-            <Category name={"meat"} exact/>
-          </Route>
-          <Route path="/product/:productId" exact>
-            <Product/>
-          </Route>
-          <Route path="/profile" exact component={Profile} />
-          <Route path="/change_password" exact component={Password} />
-
           <Route path="/category/:categoryName" exact component={Category}/>
           <Route path="/product/:productId" exact component={Product}/>
+          
+          <Route path="/profile" exact component={Profile} />
+          <Route path="/change_password" exact component={Password} />
         </Switch>
       </BrowserRouter>
     </UserContext.Provider>
