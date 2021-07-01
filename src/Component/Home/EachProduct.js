@@ -19,10 +19,12 @@ export default function EachProduct({product}){
                 if(cart.includes(found)){
                     found.qtd = found.qtd+1
                     localStorage.setItem("cart", JSON.stringify([...cart]));
+                    alert("Mais um item adicionado no carrinho!");
                 }else{
                     let qtd = 1;
                     setCart([...cart, {product, qtd}]);   
                     localStorage.setItem("cart", JSON.stringify([...cart, {product, qtd}]));
+                    alert("Item adicionado no carrinho!");
                 }
             }}>
                 <span> Add +</span>

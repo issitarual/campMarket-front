@@ -31,10 +31,13 @@ export default function ProductPage({productId}){
                             let found = cart.find((item)=>item.product.name === product.name);
                             if(cart.includes(found)){
                                 found.qtd = found.qtd+1
+                                localStorage.setItem("cart", JSON.stringify([...cart]));
+                                alert("Mais um item adicionado no carrinho!");
                             } else {
                                 let qtd = 1
                                 setCart([...cart, {product, qtd}]);
                                 localStorage.setItem("cart", JSON.stringify([...cart, {product, qtd}]));
+                                alert("Item adicionado no carrinho!");
                             }
                         }}>Add +</button>
                     </span>

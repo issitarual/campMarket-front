@@ -181,7 +181,7 @@ function Header(){
                                 </EachProductOnCartMobile>
                             )}
                                 <Footer>
-                                    <h1>Total: {(Total.toLocaleString("en-US", {style: 'currency', currency: 'USD' }).replace(".",","))}</h1>
+                                    <h1>Total: {(Total.toLocaleString("pt-BR", {style: 'currency', currency: 'BRL' }).replace(".",","))}</h1>
                                     <button>Finalizar compra</button>
                                     <button onClick={()=>{setCart([]);localStorage.clear()}}>Limpar o carrinho</button>
                                 </Footer>

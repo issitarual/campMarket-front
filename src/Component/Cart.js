@@ -104,7 +104,7 @@ function Cart({ cartIsOpen, setCartIsOpen }){
                                 </EachProduct>
                             )}
                                 <Footer>
-                                    <h1>Total: {(Total.toLocaleString("en-US", {style: 'currency', currency: 'USD' }).replace(".",","))}</h1>
+                                    <h1>Total: {(Total.toLocaleString("pt-BR", {style: 'currency', currency: 'BRL' }).replace(".",","))}</h1>
                                     <button onClick={()=>attemptToPurchase()}>Finalizar compra</button>
                                     <button onClick={()=>{setCart([]);localStorage.clear()}}>Limpar o carrinho</button>
                                     
