@@ -11,7 +11,7 @@ import UserContext from "../Context/UserContext";
 import { useHistory } from "react-router";
 import { useContext } from 'react';
 
-function Sidebar({isOpen ,setIsOpen}){
+function Sidebar({isOpen ,setIsOpen, cartIsOpen, setCartIsOpen}){
     const {user} = useContext(UserContext);
     const history=useHistory();
     
@@ -50,9 +50,8 @@ function Sidebar({isOpen ,setIsOpen}){
                                 Home
                                 <Link to={"/"} />
                             </MenuItem>
-                            <MenuItem icon={<FiShoppingCart />}>
+                            <MenuItem onClick={()=>setCartIsOpen(!cartIsOpen)} icon={<FiShoppingCart />}>
                                 Cart
-                                <Link to={"/cart"} />
                             </MenuItem>
                             <MenuItem icon={<BsFillPersonFill />}>
                                 Profile

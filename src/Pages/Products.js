@@ -4,14 +4,17 @@ import Sidebar from "../Component/Sidebar";
 import { useState } from "react";
 import Home from "../Component/Home/Home";
 import SearchFeature from "../Component/SearchFeature";
+import Cart from "../Component/Cart";
 
 function Products() {
   const [isOpen, setIsOpen] = useState(false);
+  const [cartIsOpen, setCartIsOpen] = useState(false);
 
   return (
     <Main>
+      <Cart cartIsOpen={cartIsOpen} setCartIsOpen={setCartIsOpen} />
       <Header />
-      <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
+      <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} cartIsOpen={cartIsOpen} setCartIsOpen={setCartIsOpen}/>
       <Home />
       <SearchFeature isOpen={isOpen} setIsOpen={setIsOpen} />
     </Main>
