@@ -35,6 +35,8 @@ function App() {
           <Route path="/profile" exact component={Profile} />
           <Route path="/change_password" exact component={Password} />
 
+          <Route path="/category/:categoryName" exact component={Category}/>
+          <Route path="/product/:productId" exact component={Product}/>
         </Switch>
       </BrowserRouter>
     </UserContext.Provider>

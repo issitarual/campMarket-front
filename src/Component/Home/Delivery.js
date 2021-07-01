@@ -11,8 +11,10 @@ export default function Delivery(){
                     width="25px"
                 />
                 <div></div>
-                <h6>Deliver in</h6>
-                <p>Rio de Janeiro,RJ</p>
+                <span>
+                    <h6>Deliver in</h6>
+                    <p>Rio de Janeiro,RJ</p>
+                </span>
             </Local>
             <Transportation>
                 <p>Delivery<br/>CampMarket</p>

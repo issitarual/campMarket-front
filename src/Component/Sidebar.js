@@ -62,15 +62,15 @@ function Sidebar({isOpen ,setIsOpen}){
                             <SubMenu icon={<IoFastFoodSharp />} title="Products">
                                 <MenuItem>
                                     <p>Vegetables</p>
-                                    <Link to={"/vegetables"} />
+                                    <Link to={"/category/vegetables"} />
                                 </MenuItem>
                                 <MenuItem>
                                     <p>Meat</p>
-                                    <Link to={"/meat"} />
+                                    <Link to={"/category/meat"} />
                                 </MenuItem>
                                 <MenuItem>
                                     <p>Cold Products</p>
-                                    <Link to={"/cold"} />
+                                    <Link to={"/category/cold"} />
                                 </MenuItem>
                             </SubMenu>
                             <MenuItem onClick={()=>setIsOpen(!isOpen)} icon={<BsSearch />}>
