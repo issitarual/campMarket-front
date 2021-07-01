@@ -11,6 +11,7 @@ import UserContext from "../Context/UserContext";
 import { useHistory } from "react-router";
 import { useContext } from 'react';
 import {DebounceInput} from 'react-debounce-input';
+import { CgLogIn } from 'react-icons/cg'
 
 function Header(){
     const {user} = useContext(UserContext);
@@ -77,12 +78,21 @@ function Header(){
                         <Link to={"/cart"}>
                             <FiShoppingCart style={{width: "25px", height: "25px"}}/>
                         </Link>
-                        <Link to={"/profile"}>
+                        <Link to={user?"/profile":"/Login"}>
                             <BsFillPersonFill style={{width: "25px", height: "25px"}}/>
                         </Link>
                         <IoFastFoodSharp onClick={()=>{setShowSearch(false);setShowProducts(!showProducts)}} style={{width: "25px", height: "25px"}}/>
                         <BsSearch onClick={()=>{setShowProducts(false);setShowSearch(!showSearch)}} style={{width: "25px", height: "25px"}}/>
+                       
+                        {user 
+                        ?
                         <BsBoxArrowRight style={{width: "25px", height: "25px"}} onClick={()=>(logOut())}/>
+                        :
+                        <Link to={"/Login"}>
+                        <CgLogIn style={{width: "25px", height: "25px"}}/>
+                        </Link>
+                          }
+                    
                     </Container>
                     <ProductsMenu showProducts={showProducts} >
                         <Link to={"/category/vegetables"}>
