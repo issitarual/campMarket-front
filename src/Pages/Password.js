@@ -21,7 +21,7 @@ function ChangePassword (e){
     
     const body = { email, password, confirmPassword };
     const request = axios.put(
-      "http://localhost:4000/change_password",
+      "https://git.heroku.com/back-campmarket.git/change_password",
       body
     );
 

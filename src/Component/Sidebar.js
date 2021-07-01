@@ -25,7 +25,7 @@ function Sidebar({isOpen ,setIsOpen}){
           }; 
       
           const request = axios.delete(
-            "http://localhost:4000/logOut",
+            "https://git.heroku.com/back-campmarket.git/logOut",
             config
           );
           request.then((response) => {

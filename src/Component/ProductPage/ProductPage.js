@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 export default function ProductPage({productId}){  
     const [product, setProduct] = useState({});
     useEffect(() => {
-        const request = axios.get(`http://localhost:4000/product/${productId}`);
+        const request = axios.get(`https://git.heroku.com/back-campmarket.git/product/${productId}`);
 
         request.then(success => setProduct(success.data));
         request.catch(error => alert("Algo deu errado, tente mais tarde!"));

@@ -15,7 +15,7 @@ function SearchFeature({ isOpen, setIsOpen }){
         setProductsList([]);
         return
       } 
-      const req = axios.get(`http://localhost:4000/search?search=${e.target.value}`);
+      const req = axios.get(`https://git.heroku.com/back-campmarket.git/search?search=${e.target.value}`);
       req.then(({data})=>{
         setShowResult(true);
         setProductsList(data);
