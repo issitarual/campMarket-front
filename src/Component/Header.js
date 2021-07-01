@@ -85,13 +85,13 @@ function Header(){
                         <BsBoxArrowRight style={{width: "25px", height: "25px"}} onClick={()=>(logOut())}/>
                     </Container>
                     <ProductsMenu showProducts={showProducts} >
-                        <Link to={"/vegetables"}>
+                        <Link to={"/category/vegetables"}>
                             <p>Vegetables</p>
                         </Link>
-                        <Link to={"/meat"}>
+                        <Link to={"/category/meat"}>
                             <p>Meat</p>
                         </Link>
-                        <Link to={"/cold"}>
+                        <Link to={"/category/cold"}>
                             <p>Cold Products</p>
                         </Link>
                     </ProductsMenu>
@@ -130,6 +130,7 @@ const Main = styled.div`
     display: none;
     font-family: 'Roboto', sans-serif;
 @media (max-width: 450px){
+        z-index: 10;
         position: fixed;
         display: flex;
         position: fixed;

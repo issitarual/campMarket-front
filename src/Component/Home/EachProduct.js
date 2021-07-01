@@ -5,11 +5,11 @@ export default function EachProduct({product}){
     const {name, image, price, id} = product;
     let history = useHistory();
     return(
-        <ProductContainer>
-            <img src={image} alt={name} onClick={()=> goToProduct(id)}/>
-            <h6 onClick={()=> goToProduct(id)}>{name}</h6>
+        <ProductContainer onClick={()=> goToProduct(id)}>
+            <img src={image} alt={name}/>
+            <h6>{name}</h6>
             <p>por R${price}</p>
-            <button onClick={() => goToProduct(id)}>
+            <button onClick={(e) => {e.stopPropagation(); alert("Vai pro carrinho")}}>
                 <span> Add +</span>
             </button>
         </ProductContainer>
