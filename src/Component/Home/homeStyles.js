@@ -101,7 +101,7 @@ const Category = styled.div`
 const ProductContainer = styled.div`
     border: 2px solid #ccc;
     width: 230px;
-    height: 350px;
+    height: 380px;
     border-radius: 5px;
     padding: 15px 10px;
     display: flex;
@@ -112,6 +112,7 @@ const ProductContainer = styled.div`
     font-family: 'Roboto', sans-serif;
     background-color: #fff;
     cursor: pointer;
+    position: relative;
     @media (max-width: 750px){
         margin: auto;
     }
@@ -129,6 +130,8 @@ const ProductContainer = styled.div`
         font-weight: bold;
         color: #000;
         margin-bottom: 5px;
+        position: absolute;
+        bottom: 40px;
     }
     button{
         background-color: #EF4F4F;
@@ -140,6 +143,8 @@ const ProductContainer = styled.div`
         justify-content: center;
         align-items: center;
         cursor: pointer;
+        position: absolute;
+        bottom: 15px;
     }
     span{
         color: #fff;

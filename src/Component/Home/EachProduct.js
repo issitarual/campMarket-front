@@ -10,7 +10,7 @@ export default function EachProduct({product}){
             <h6>{name}</h6>
             <p>por R${price}</p>
             <button onClick={(e) => {e.stopPropagation(); alert("Vai pro carrinho")}}>
-                <span> Add +</span>
+                <span> Adicionar +</span>
             </button>
         </ProductContainer>
     );

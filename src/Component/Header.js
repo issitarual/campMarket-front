@@ -86,13 +86,13 @@ function Header(){
                     </Container>
                     <ProductsMenu showProducts={showProducts} >
                         <Link to={"/category/vegetables"}>
-                            <p>Vegetables</p>
+                            <p>Hortifruti</p>
                         </Link>
                         <Link to={"/category/meat"}>
-                            <p>Meat</p>
+                            <p>Carnes</p>
                         </Link>
                         <Link to={"/category/cold"}>
-                            <p>Cold Products</p>
+                            <p>Frios</p>
                         </Link>
                     </ProductsMenu>
                     <Search showSearch={showSearch}>

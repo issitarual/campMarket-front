@@ -6,7 +6,7 @@ export default function Footer (){
     return(
         <FooterContainer>
             <CreditCard>
-                <h5>Credit Cards</h5>
+                <h5>Cartões de Crédito</h5>
                 <img src="https://zonasul.vtexassets.com/arquivos/logos-pagamentos.png" alt="credit cards"/>
             </CreditCard>
             <Logo>
@@ -18,7 +18,7 @@ export default function Footer (){
                 <h5>Camp<br/>Market</h5>
             </Logo>
             <Media>
-                <p>Follow Our Social Media</p>
+                <p>Siga nossas redes sociais</p>
                 <span>
                     <div onClick={() => socialMedia("instagram")}>
                         <SiInstagram color="#fff"/>

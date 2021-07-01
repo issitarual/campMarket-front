@@ -25,9 +25,9 @@ export default function ProductPage({productId}){
                     <h2>{name}</h2>
                     <span>
                         <h3>por R${price}</h3>
-                        <button onClick={() => alert("Adicionar ao carrinho")}>Add +</button>
+                        <button onClick={() => alert("Adicionar ao carrinho")}>Adicionar +</button>
                     </span>
-                    <h4>Descripction</h4>
+                    <h4>Descrição</h4>
                     <p>{description}</p>
                 </div>
             </Product>

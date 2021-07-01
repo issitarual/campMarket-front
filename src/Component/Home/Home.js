@@ -25,10 +25,12 @@ export default function Home (){
     return(
         <Container>
             <Delivery/>
-            {products.length === 0? <Loading/>: null}
             <Products type={"vegetables"} products={vegetables}/>
+            {products.length === 0? <Loading/>: null}
             <Products type={"cold products"} products={coldProducts}/>
+            {products.length === 0? <Loading/>: null}
             <Products type={"meat"} products={meat}/>
+            {products.length === 0? <Loading/>: null}
             <Footer/>
         </Container>
     )

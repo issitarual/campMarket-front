@@ -17,8 +17,13 @@ export default function CategoryPage({name}){
     },[name]);
     return(
         <Container>
+            <h1>
+                {name === "vegetables"? "HORTIFRUTI":
+                name === "meat"? "CARNES E PEIXES":
+                name === "cold products"? "FRIOS E LATICÍNIOS":
+                null}
+            </h1>
             {products.length === 0? <Loading/>: null}
-            <h1>{name.toUpperCase()}</h1>
             <div>
                 {products.map((n,i) => <EachProduct key={i} product={n}/>)}
             </div>

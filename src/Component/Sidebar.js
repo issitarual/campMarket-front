@@ -51,29 +51,29 @@ function Sidebar({isOpen ,setIsOpen}){
                                 <Link to={"/"} />
                             </MenuItem>
                             <MenuItem icon={<FiShoppingCart />}>
-                                Cart
+                                Carrinho
                                 <Link to={"/cart"} />
                             </MenuItem>
                             <MenuItem icon={<BsFillPersonFill />}>
-                                Profile
+                                Perfil
                                 <Link to={"/profile"} />
                             </MenuItem>
-                            <SubMenu icon={<IoFastFoodSharp />} title="Products">
+                            <SubMenu icon={<IoFastFoodSharp />} title="Produtos">
                                 <MenuItem>
-                                    <p>Vegetables</p>
+                                    <p>Hortifruti</p>
                                     <Link to={"/category/vegetables"} />
                                 </MenuItem>
                                 <MenuItem>
-                                    <p>Meat</p>
+                                    <p>Carnes e Peixes</p>
                                     <Link to={"/category/meat"} />
                                 </MenuItem>
                                 <MenuItem>
-                                    <p>Cold Products</p>
+                                    <p>Frios e laticínios</p>
                                     <Link to={"/category/cold"} />
                                 </MenuItem>
                             </SubMenu>
                             <MenuItem onClick={()=>setIsOpen(!isOpen)} icon={<BsSearch />}>
-                                Search
+                                Busca
                             </MenuItem>
                         </Menu>
                     </SidebarContent>
