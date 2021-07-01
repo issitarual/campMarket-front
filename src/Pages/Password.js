@@ -1,19 +1,17 @@
-import styled from 'styled-components';
-import Loader from "react-loader-spinner";
 import { useState } from 'react';
+import { useHistory } from 'react-router';
+import styled from 'styled-components';
+import Loader from 'react-loader-spinner';
 import axios from 'axios';
-import { useHistory } from "react-router";
 
-function SignUp(){
-
-const history=useHistory();     
-const [loading,setLoading]=useState(false);
-const [name,setName]=useState("");
+export default function Password(){
 const [email,setEmail]=useState("");
 const [password,setPassword]=useState("");
 const [confirmPassword,setConfirmPassword]=useState("");
+const [loading,setLoading]=useState("");
+const history=useHistory();
 
-function signUP(e){
+function ChangePassword (e){
     e.preventDefault();
 
     if(password!==confirmPassword){
@@ -21,9 +19,9 @@ function signUP(e){
       return;
     }
     
-    const body = { name, email, password, confirmPassword };
-    const request = axios.post(
-      "http://localhost:4000/signUp",
+    const body = { email, password, confirmPassword };
+    const request = axios.put(
+      "http://localhost:4000/change_password",
       body
     );
 
@@ -31,40 +29,28 @@ function signUP(e){
 
     request.then((response) => {
       setLoading(false);
+      alert("password was successfully changed!");
       history.push("/Login");
     });
 
     request.catch((error) => {
-     if(error.response.status===409) alert("Email address already registered!");
-      
-      else alert("Login Failed - Email or Password is Incorrect");
       setLoading(false);
+      if(error.response.status===404) alert("Email address is not registered!");
+      else alert(" Unable to update the password")
     });
-}        
- 
+}     
 
 
     return(
-<>
-<Body>
-<Logo>CampMarket</Logo>
+        <Body>
+        <Logo>CampMarket</Logo>
 
+        <h1>Change password</h1>
+  
 
-
-<form onSubmit={signUP}>
+        <form onSubmit={ChangePassword}>
 
 <Info>
-
-<input
-type="text"
-required
-placeholder="Name"
-value={name} 
-onChange={e => setName(e.target.value)} 
-disabled={loading}
-/>  
-
-
 <input
 type="email"
 required
@@ -90,49 +76,61 @@ placeholder="Confirm password"
 value={confirmPassword} 
 onChange={e => setConfirmPassword(e.target.value)} 
 disabled={loading}
-/>  
+/> 
 
 
 <button  type="submit" required disabled={loading} >
- {!loading ? "Sign Up" : <Loader type="ThreeDots" color="#FFF" height={45} width={50}/>}
+ {!loading ? "Submit" : <Loader type="ThreeDots" color="#FFF" height={45} width={50}/>}
 </button> 
+
+<span onClick={()=>(history.push("/Login"))} class="password">Switch back to log in</span>
 
 </Info>
 </form>
 
-<span onClick={()=>(history.push("/Login"))}> Switch back to log in</span>
-
-</Body>
-</>
-
-    );
-
+    </Body>
+    )
 }
 
-const Body =styled.div `
-  background-image: linear-gradient(#f6e9c7, #b3e4e1);
+const Body = styled.div `
+ background-image: linear-gradient(#f6e9c7, #b3e4e1); 
+  padding:30px;
   width: 100vw;
   height: 100vh;
-  display:flex;
-  align-items:center;
+  display: flex;
   flex-direction: column;
+  align-items: center;
 
-span{
-    cursor:pointer;
+  h1{
+    margin-top:50px;
+    margin-bottom:30px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    display: flex;
+    font-size: 40px;
+    color: #696969;
+    text-align: center;    
+  }
+
+
+    span{
+        cursor:pointer;
     color: grey;
     font-size: 20px;
     text-decoration-line: underline;
-}
+    }
+
+
 `;
 
 const Logo = styled.div`
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
-    margin:50px;
     display: flex;
     height: 60px;
-    font-size: 40px;
+    font-size: 35px;
     color: #000;
+    font-weight: bold;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -140,7 +138,6 @@ const Logo = styled.div`
 `;
 
 const Info =styled.div ` 
-
 display: flex;
 flex-direction:column ;
 align-items: center;
@@ -186,6 +183,3 @@ button{
 }
 }
 `;
-
-
-export default SignUp;

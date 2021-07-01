@@ -8,31 +8,25 @@ import Login from "./Pages/Login";
 import SignUp from "./Pages/SignUp";
 import Category from "./Pages/Category";
 import Product from "./Pages/Product";
+import Profile from "./Pages/Profile";
+import Password from "./Pages/Password";
 
 function App() {
   const [user, setUser] = useState();
-  const [cart, setCart] = useState();
+  const [cart, setCart] = useState([]);
   return (
-    <UserContext.Provider value={{ user: user, setUser }}>
-      <CartContext.Provider value={{cart, setCart}} >
+    <UserContext.Provider value={{ user: user || JSON.parse(localStorage.getItem("user")), setUser }}>
+      <CartContext.Provider value={{ cart: cart || JSON.parse(localStorage.getItem("cart")), setCart }} >
         <BrowserRouter>
           <GlobalStyles />
           <Switch>
             <Route path="/" exact component={Products} />
-            <Route path="/login" exact component={Login} />
-            <Route path="/signUp" exact component={SignUp} />
-            <Route path="/vegetables">
-              <Category name={"vegetables"}/>
-            </Route>
-            <Route path="/cold">
-              <Category name={"cold products"} exact/>
-            </Route>
-            <Route path="/meat">
-              <Category name={"meat"} exact/>
-            </Route>
-            <Route path="/product/:productId" exact>
-              <Product/>
-            </Route>
+            <Route path="/Login" exact component={Login} />
+            <Route path="/SignUp" exact component={SignUp} />
+            <Route path="/category/:categoryName" exact component={Category}/>
+            <Route path="/product/:productId" exact component={Product}/>
+            <Route path="/profile" exact component={Profile} />
+            <Route path="/change_password" exact component={Password} />
           </Switch>
         </BrowserRouter>
       </CartContext.Provider>

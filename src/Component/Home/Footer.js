@@ -7,7 +7,7 @@ export default function Footer (){
         <FooterContainer>
             <CreditCard>
                 <h5>Credit Cards</h5>
-                <img src="https://zonasul.vtexassets.com/arquivos/logos-pagamentos.png"/>
+                <img src="https://zonasul.vtexassets.com/arquivos/logos-pagamentos.png" alt="credit cards"/>
             </CreditCard>
             <Logo>
                 <CartOutline

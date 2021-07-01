@@ -1,7 +1,6 @@
 import { BsSearch, BsFillPersonFill, BsBoxArrowRight } from 'react-icons/bs';
 import { IoFastFoodSharp } from "react-icons/io5";
-import { FiHome, FiShoppingCart } from 'react-icons/fi'
-import { CgLogIn } from 'react-icons/cg'
+import { FiHome, FiShoppingCart } from 'react-icons/fi';
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import 'react-pro-sidebar/dist/css/styles.css';
@@ -10,10 +9,12 @@ import axios  from 'axios';
 import UserContext from "../Context/UserContext";
 import { useHistory } from "react-router";
 import { useContext } from 'react';
+import { AiOutlineLogin } from 'react-icons/ai';
 
 function Sidebar({isOpen ,setIsOpen, cartIsOpen, setCartIsOpen}){
     const {user} = useContext(UserContext);
     const history=useHistory();
+
     
     function logOut(){
        if (!user) return;
@@ -55,20 +56,20 @@ function Sidebar({isOpen ,setIsOpen, cartIsOpen, setCartIsOpen}){
                             </MenuItem>
                             <MenuItem icon={<BsFillPersonFill />}>
                                 Profile
-                                <Link to={"/profile"} />
+                                <Link to={user?"/profile":"/Login"} />
                             </MenuItem>
                             <SubMenu icon={<IoFastFoodSharp />} title="Products">
                                 <MenuItem>
                                     <p>Vegetables</p>
-                                    <Link to={"/vegetables"} />
+                                    <Link to={"/category/vegetables"} />
                                 </MenuItem>
                                 <MenuItem>
                                     <p>Meat</p>
-                                    <Link to={"/meat"} />
+                                    <Link to={"/category/meat"} />
                                 </MenuItem>
                                 <MenuItem>
                                     <p>Cold Products</p>
-                                    <Link to={"/cold"} />
+                                    <Link to={"/category/cold"} />
                                 </MenuItem>
                             </SubMenu>
                             <MenuItem onClick={()=>setIsOpen(!isOpen)} icon={<BsSearch />}>
@@ -83,7 +84,7 @@ function Sidebar({isOpen ,setIsOpen, cartIsOpen, setCartIsOpen}){
                                 Logout
                             </MenuItem>
                             :
-                            <MenuItem icon={<CgLogIn />} >
+                            <MenuItem icon={<AiOutlineLogin />} >
                                 Login
                                 <Link to={"/Login"}/>
                             </MenuItem>
