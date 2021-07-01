@@ -57,7 +57,7 @@ function Sidebar({isOpen ,setIsOpen}){
                             </MenuItem>
                             <MenuItem icon={<BsFillPersonFill />}>
                                 Profile
-                                <Link to={user?"/profile":"/Login"} />
+                                <Link to={"/profile"} />
                             </MenuItem>
                             <SubMenu icon={<IoFastFoodSharp />} title="Products">
                                 <MenuItem>

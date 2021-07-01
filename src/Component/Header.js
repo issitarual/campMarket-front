@@ -78,7 +78,7 @@ function Header(){
                         <Link to={"/cart"}>
                             <FiShoppingCart style={{width: "25px", height: "25px"}}/>
                         </Link>
-                        <Link to={user?"/profile":"/Login"}>
+                        <Link to={"/profile"}>
                             <BsFillPersonFill style={{width: "25px", height: "25px"}}/>
                         </Link>
                         <IoFastFoodSharp onClick={()=>{setShowSearch(false);setShowProducts(!showProducts)}} style={{width: "25px", height: "25px"}}/>
