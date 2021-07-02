@@ -114,7 +114,6 @@ function Cart({ cartIsOpen, setCartIsOpen }){
                                     <h1>Total: {(Total.toLocaleString("pt-BR", {style: 'currency', currency: 'BRL' }).replace(".",","))}</h1>
                                     <button onClick={()=>attemptToPurchase()}>Finalizar compra</button>
                                     <button onClick={()=>{setCart([]);localStorage.clear()}}>Limpar o carrinho</button>
-                                    
                                 </Footer>
                         </Product>
                         }
@@ -231,6 +230,8 @@ const Buttons = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: aliceblue;
+    position: relative;
     button{
         width: 35px;
         height: 35px;
