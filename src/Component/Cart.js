@@ -133,14 +133,17 @@ const Main = styled.div`
     top: 0;
     z-index: 999;
     font-family: 'Roboto', sans-serif;
+    div{
+        max-height: 100%;
+    }
     @media (max-width: 450px){
         display: none;
     }
 `
 
 const Container = styled.div`
-    max-width: 300px;
-    min-width: 365px;
+    max-width: 380px;
+    min-width: 380px;
     height: 100%;
     background-color: #fff;
     position: fixed;
@@ -150,6 +153,19 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-y: scroll;
+    /* width */
+    ::-webkit-scrollbar {
+    width: 4px;
+    }
+    /* Track */
+    ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    }
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background-image: linear-gradient(#f6e9c7, #b3e4e1);
+    }
 `
 
 const CloseButton = styled.div`
@@ -163,8 +179,8 @@ const CloseButton = styled.div`
 const EmptyMessage = styled.div`
     display: flex;
     flex-direction: column;
-    max-width: 300px;
-    min-width: 365px;
+    max-width: 380px;
+    min-width: 380px;
     align-items: center;
     p{
         padding-top: 40px;
@@ -183,12 +199,14 @@ const Description = styled.div`
 `
 
 const Product = styled.div`
+    max-height: 60%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 40px;
     h1{
-        padding-top: 80px;
-        padding-bottom: 50px;
+        padding-top: 35px;
+        padding-bottom: 20px;
     }
     button{
         border: none;
@@ -206,6 +224,7 @@ const Price = styled.div`
     p{
         max-width: 110px;
         min-width: 110px;
+        word-break: break-word;
     }
 `
 
@@ -213,16 +232,19 @@ const Footer = styled.div`
     display: flex;
     flex-direction: column;
     text-align: center;
+    margin-bottom: 70px;
     button{
         margin-top: 20px;
     }
 `
 
 const EachProduct = styled.div`
-    max-width: 300px;
+    max-width: 365px;
     min-width: 365px;
+    height: fit-content;
     display: flex;
     align-items: center;
+    box-sizing: border-box;
 `
 
 const Buttons = styled.div`

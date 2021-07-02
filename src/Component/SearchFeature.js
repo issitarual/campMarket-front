@@ -39,7 +39,8 @@ function SearchFeature({ isOpen, setIsOpen }){
               <DebounceInput
                 type="text"
                 value={searchText}
-                debounceTimeout={300}
+                debounceTimeout={200}
+                minLength={3}
                 className="debounceInput"
                 onChange={(e) => {
                   AttemptToSearch(e);
@@ -104,6 +105,7 @@ const Search = styled.div`
   width: 80%;
   display: flex;
   flex-direction: column;
+  
 `
 
 const Button = styled.div`
@@ -125,7 +127,6 @@ const Result = styled.div`
   flex-direction: column;
   width: 100%;
   background-color: #fff;
-  height: fit-content;
   gap: 10px;
   span {
     color: #515151;
@@ -135,7 +136,6 @@ const Result = styled.div`
 `
 
 const ResultMenu = styled.div`
-
 `
 
 const Item = styled.div`
