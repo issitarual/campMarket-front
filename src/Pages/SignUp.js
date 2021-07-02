@@ -93,7 +93,7 @@ disabled={loading}
 />  
 
 
-<button  type="submit" required isdisabled={loading} >
+<button  type="submit" required disabled={loading} >
  {!loading ? "Sign Up" : <Loader type="ThreeDots" color="#FFF" height={45} width={50}/>}
 </button> 
 
