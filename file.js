@@ -51,14 +51,13 @@ export default function EditPost({ post, token, updateList,goToHashtag }){
         const body = { "text": text };
         const promise = axios.put(`https://mock-api.bootcamp.respondeai.com.br/api/v2/linkr/posts/${post.id}`, body, config);
         promise.then((response) => {
-        setIsWaitingServer(false);    
-        setCliked(false);
-        updateList();
+            setIsWaitingServer(false);    
+            setCliked(false);
+            updateList();
         })
         promise.catch((error)=>{
             setIsWaitingServer(false);
             alert("Não foi possível salvar as alterações,tente novamente!");
-
         })
     }
 
