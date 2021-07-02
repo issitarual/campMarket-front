@@ -12,16 +12,19 @@ function Cart({ cartIsOpen, setCartIsOpen }){
     const {user} = useContext(UserContext);
     const {cart, setCart} = useContext(CartContext);
     const history = useHistory();
+    let Total = 0;
     useEffect(()=>{
-        if(localStorage.length > 0){
-            setCart(JSON.parse(localStorage.getItem("cart")))
+        if(localStorage.cart){
+            setCart(JSON.parse(localStorage.getItem("cart")));
         }
     },[]) //eslint-disable-line
-    let Total = 0;
-    {cart.map(p => {
-        let sum = ((p.product.price.replace(",",".") * p.qtd))
-        Total = Total + sum
-    })}
+    if(cart){
+        cart.map(p => {
+            let sum = ((p.product.price.replace(",",".") * p.qtd))
+            Total = Total + sum
+        })
+    }
+
 
     function increaseQtd(product){
         product.qtd = product.qtd+1
@@ -55,6 +58,10 @@ function Cart({ cartIsOpen, setCartIsOpen }){
                 return
             }
         }else{
+            if(cart.length === 0){
+                alert("Carrinho vazio!");
+                return
+            }
             const config = {
                 headers: {
                   Authorization: `Bearer ${user.token}`,

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BsSearch, BsFillPersonFill, BsBoxArrowRight } from 'react-icons/bs';
 import { IoFastFoodSharp } from "react-icons/io5";
 import { FiHome, FiShoppingCart } from 'react-icons/fi'
@@ -28,10 +28,17 @@ function Header(){
     const [showCart, setShowCart] = useState(false);
     const history=useHistory();
     let Total = 0;
-    {cart.map(p => {
-        let sum = ((p.product.price.replace(",",".") * p.qtd))
-        Total = Total + sum
-    })}
+    useEffect(()=>{
+        if(localStorage.cart){
+            setCart(JSON.parse(localStorage.getItem("cart")));
+        }
+    },[]) //eslint-disable-line
+    if(cart){
+        cart.map(p => {
+            let sum = ((p.product.price.replace(",",".") * p.qtd))
+            Total = Total + sum
+        })
+    }
 
     function AttemptToSearch(e){
         if(e.target.value.length === 0){
@@ -97,7 +104,6 @@ function Header(){
         setCart([...newCartFiltered])
     }
 
-
     return(
         <>
             <IconContext.Provider value>
@@ -157,7 +163,7 @@ function Header(){
                             <Button onClick={()=>{setSearchText("");setShowSearch(false);setProductsList([]);}}>Cancel</Button>
                     </Search>
                     <AllCartMobile showCart={showCart}>
-                        {cart.length === 0 ?
+                        {cart.length === 0?
                             <EmptyMessage>
                                 <FaShoppingCart size={"60px"} color={"#515151"} />
                                 <p>{"Carrinho vazio :)"}</p>

@@ -16,7 +16,7 @@ function App() {
   const [cart, setCart] = useState([]);
   return (
     <UserContext.Provider value={{ user: user || JSON.parse(localStorage.getItem("user")), setUser }}>
-      <CartContext.Provider value={{ cart: cart || JSON.parse(localStorage.getItem("cart")), setCart }} >
+      <CartContext.Provider value={{ cart:cart|| JSON.parse(localStorage.getItem("cart")), setCart }} >
         <BrowserRouter>
           <GlobalStyles />
           <Switch>
