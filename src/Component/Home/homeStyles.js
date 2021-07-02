@@ -101,13 +101,13 @@ const Category = styled.div`
 const ProductContainer = styled.div`
     border: 2px solid #ccc;
     width: 230px;
-    height: 380px;
+    height: 330px;
     border-radius: 5px;
     padding: 15px 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     font-size: 15px;
     font-family: 'Roboto', sans-serif;
     background-color: #fff;
