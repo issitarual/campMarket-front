@@ -4,18 +4,21 @@ import Sidebar from '../Component/Sidebar';
 import Delivery from '../Component/Home/Delivery';
 import ProductPage from '../Component/ProductPage/ProductPage';
 import SearchFeature from "../Component/SearchFeature";
+import Cart from '../Component/Cart';
 import styled from 'styled-components';
 import { useState } from 'react';
 
 export default function Product(){
     const [isOpen, setIsOpen] = useState(false);
     const { productId } = useParams();
+    const [cartIsOpen, setCartIsOpen] = useState(false);
     
     return(
         <Main>
             <Header />
-            <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
             <Delivery />
+            <Cart cartIsOpen={cartIsOpen} setCartIsOpen={setCartIsOpen} />
+            <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} cartIsOpen={cartIsOpen} setCartIsOpen={setCartIsOpen}/>
             <SearchFeature isOpen={isOpen} setIsOpen={setIsOpen} />
             <ProductPage productId={productId}/>
         </Main>

@@ -1,7 +1,6 @@
 import { BsSearch, BsFillPersonFill, BsBoxArrowRight } from 'react-icons/bs';
 import { IoFastFoodSharp } from "react-icons/io5";
-import { FiHome, FiShoppingCart } from 'react-icons/fi'
-import { CgLogIn } from 'react-icons/cg'
+import { FiHome, FiShoppingCart } from 'react-icons/fi';
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import 'react-pro-sidebar/dist/css/styles.css';
@@ -10,8 +9,9 @@ import axios  from 'axios';
 import UserContext from "../Context/UserContext";
 import { useHistory } from "react-router";
 import { useContext } from 'react';
+import { AiOutlineLogin } from 'react-icons/ai';
 
-function Sidebar({isOpen ,setIsOpen}){
+function Sidebar({isOpen ,setIsOpen, cartIsOpen, setCartIsOpen}){
     const {user} = useContext(UserContext);
     const history=useHistory();
 
@@ -51,9 +51,8 @@ function Sidebar({isOpen ,setIsOpen}){
                                 Home
                                 <Link to={"/"} />
                             </MenuItem>
-                            <MenuItem icon={<FiShoppingCart />}>
+                            <MenuItem onClick={()=>setCartIsOpen(!cartIsOpen)} icon={<FiShoppingCart />}>
                                 Cart
-                                <Link to={"/cart"} />
                             </MenuItem>
                             <MenuItem icon={<BsFillPersonFill />}>
                                 Profile
@@ -85,7 +84,7 @@ function Sidebar({isOpen ,setIsOpen}){
                                 Logout
                             </MenuItem>
                             :
-                            <MenuItem icon={<CgLogIn />} >
+                            <MenuItem icon={<AiOutlineLogin />} >
                                 Login
                                 <Link to={"/Login"}/>
                             </MenuItem>
