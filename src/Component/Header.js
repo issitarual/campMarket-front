@@ -104,6 +104,36 @@ function Header(){
         setCart([...newCartFiltered])
     }
 
+    function attemptToPurchase(){
+        if(!user){
+            const checkAnswer = window.confirm("Você não está logado, deseja realizar o login para continuar?");
+            if(checkAnswer){
+                history.push("/Login");
+                return
+            }
+        }else{
+            if(cart.length === 0){
+                alert("Carrinho vazio!");
+                return
+            }
+            const config = {
+                headers: {
+                  Authorization: `Bearer ${user.token}`,
+                },
+            }; 
+            const body = {
+                cart,
+            }
+            const req = axios.post('http://localhost:4000/finish', body, config)
+            req.then(()=>{
+                localStorage.clear();
+                setCart([]);
+                setShowProducts(false);
+                alert("Compra realizada com sucesso!");
+            })
+        }
+    }
+
     return(
         <>
             <IconContext.Provider value>
@@ -188,7 +218,7 @@ function Header(){
                             )}
                                 <Footer>
                                     <h1>Total: {(Total.toLocaleString("pt-BR", {style: 'currency', currency: 'BRL' }).replace(".",","))}</h1>
-                                    <button>Finalizar compra</button>
+                                    <button onClick={()=>attemptToPurchase()}>Finalizar compra</button>
                                     <button onClick={()=>{setCart([]);localStorage.clear()}}>Limpar o carrinho</button>
                                 </Footer>
                         </CartMobile>
