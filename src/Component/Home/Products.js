@@ -56,7 +56,9 @@ export default function Products({type, products}){
             <Carousel 
                 responsive={responsive}
                 removeArrowOnDeviceType={["tablet", "mobile"]}
-                autoPlaySpeed={1000}
+                autoPlaySpeed={3000}
+                infinite={true}
+                autoPlay={true}
                 keyBoardControl={true}
                 containerClass="carousel-container"
             >
