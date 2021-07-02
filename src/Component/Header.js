@@ -26,7 +26,7 @@ function Header(){
             setProductsList([]);
             return
           } 
-          const req = axios.get(`http://localhost:4000/search?search=${e.target.value}`);
+          const req = axios.get(`https://back-campmarket.herokuapp.com/search?search=${e.target.value}`);
           req.then(({data})=>{
             setShowResult(true);
             setProductsList(data);
