@@ -139,7 +139,8 @@ const Main = styled.div`
 `
 
 const Container = styled.div`
-    width: fit-content;
+    max-width: 300px;
+    min-width: 365px;
     height: 100%;
     background-color: #fff;
     position: fixed;
@@ -206,9 +207,6 @@ const Price = styled.div`
         max-width: 110px;
         min-width: 110px;
     }
-    span{
-        padding-left: 10px;
-    }
 `
 
 const Footer = styled.div`
@@ -221,7 +219,8 @@ const Footer = styled.div`
 `
 
 const EachProduct = styled.div`
-    width: 100%;
+    max-width: 300px;
+    min-width: 365px;
     display: flex;
     align-items: center;
 `
@@ -240,8 +239,9 @@ const Buttons = styled.div`
         margin-left: 5px;
     }
     span{
+        width: 10px;
         padding-right: 20px;
-        padding-left: 5px;
+        padding-left: 15px;
     }
 `
 
