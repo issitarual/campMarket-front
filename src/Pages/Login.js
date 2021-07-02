@@ -15,7 +15,10 @@ function Login() {
   function login(e) {
     e.preventDefault();
     const body = { email, password };
-    const request = axios.post("http://localhost:4000/Login", body);
+    const request = axios.post(
+      "https://back-campmarket.herokuapp.com/Login",
+      body
+    );
 
     setLoading(true);
 
@@ -49,17 +52,17 @@ function Login() {
             <input
               type="password"
               required
-              placeholder="Password"
+              placeholder="Senha"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               disabled={loading}
             />
             <div onClick={() => history.push("/change_password")}>
-              <span className="password">Forgot password?</span>
+              <span className="password">Esqueceu a senha?</span>
             </div>
             <button type="submit" required disabled={loading}>
               {!loading ? (
-                "Log In"
+                "Entrar"
               ) : (
                 <Loader type="ThreeDots" color="#FFF" height={45} width={50} />
               )}
@@ -68,7 +71,7 @@ function Login() {
         </form>
         <span onClick={() => history.push("/SignUp")}>
           {" "}
-          First time? Create an account!
+          Primeira vez? Crie uma conta!
         </span>
       </Body>
     </>

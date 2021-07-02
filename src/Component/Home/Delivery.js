@@ -12,7 +12,7 @@ export default function Delivery(){
                 />
                 <div></div>
                 <span>
-                    <h6>Deliver in</h6>
+                    <h6>Entregamos em</h6>
                     <p>Rio de Janeiro,RJ</p>
                 </span>
             </Local>

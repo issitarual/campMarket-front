@@ -9,19 +9,24 @@ export default function CategoryPage({name}){
     if(name === "cold") name = "cold products"
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        const request = axios.get(`http://localhost:4000/category/${name}`);
+        const request = axios.get(`https://back-campmarket.herokuapp.com/category/${name}`);
 
         request.then(success => setProducts(success.data));
         request.catch(error => alert("Algo deu errado, tente mais tarde!"));
     },[name]);
     return(
         <Container>
-            {products.length === 0? <Loading/>: null}
-            <h1>{name.toUpperCase()}</h1>
+            <h1>
+                {name === "vegetables"? "HORTIFRUTI":
+                name === "meat"? "CARNES E PEIXES":
+                name === "cold products"? "FRIOS E LATICÍNIOS":
+                null}
+            </h1>
+            {products.length === 0? <Loading page={"product"}/>: null}
             <div>
                 {products.map((n,i) => <EachProduct key={i} product={n}/>)}
             </div>
-            <Footer/>
+            <Footer page={"category"}/>
         </Container>
     )
 }

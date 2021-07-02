@@ -101,7 +101,7 @@ const Category = styled.div`
 const ProductContainer = styled.div`
     border: 2px solid #ccc;
     width: 230px;
-    height: 350px;
+    height: 380px;
     border-radius: 5px;
     padding: 15px 10px;
     display: flex;
@@ -112,6 +112,7 @@ const ProductContainer = styled.div`
     font-family: 'Roboto', sans-serif;
     background-color: #fff;
     cursor: pointer;
+    position: relative;
     @media (max-width: 750px){
         margin: auto;
     }
@@ -129,6 +130,8 @@ const ProductContainer = styled.div`
         font-weight: bold;
         color: #000;
         margin-bottom: 5px;
+        position: absolute;
+        bottom: 40px;
     }
     button{
         background-color: #EF4F4F;
@@ -140,6 +143,8 @@ const ProductContainer = styled.div`
         justify-content: center;
         align-items: center;
         cursor: pointer;
+        position: absolute;
+        bottom: 15px;
     }
     span{
         color: #fff;
@@ -157,7 +162,7 @@ const FooterContainer = styled.footer`
     justify-content: space-between;
     @media (max-width: 770px){
         flex-direction: column;
-        height: 300px;
+        height: ${props => props.page === "category"? "350px": "300px"}
     }
 `; 
 
@@ -175,6 +180,9 @@ const Logo = styled.div`
 `;
 
 const CreditCard = styled.div`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     h5{
         font-family: 'Roboto', sans-serif;
         text-align: center;
@@ -191,12 +199,15 @@ const CreditCard = styled.div`
 `;
 
 const Media = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     p{
         font-family: 'Roboto', sans-serif;
         text-align: center;
         color: #3F3F40;
         font-size: 16px;
-        margin-bottom: 10px;   
+        margin-bottom: ${props => props.page === "category"? "0px": "10px"};   
     }
     span{
         display: flex;

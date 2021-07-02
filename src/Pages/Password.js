@@ -21,7 +21,7 @@ function ChangePassword (e){
     
     const body = { email, password, confirmPassword };
     const request = axios.put(
-      "http://localhost:4000/change_password",
+      "https://back-campmarket.herokuapp.com/change_password",
       body
     );
 
@@ -45,7 +45,7 @@ function ChangePassword (e){
         <Body>
         <Logo>CampMarket</Logo>
 
-        <h1>Change password</h1>
+        <h1>Mudar Senha</h1>
   
 
         <form onSubmit={ChangePassword}>
@@ -63,7 +63,7 @@ disabled={loading}
 <input
 type="password"
 required
-placeholder="Password"
+placeholder="Senha"
 value={password} 
 onChange={e => setPassword(e.target.value)} 
 disabled={loading}
@@ -72,18 +72,18 @@ disabled={loading}
 <input
 type="password"
 required
-placeholder="Confirm password"
+placeholder="Confirmar Senha"
 value={confirmPassword} 
 onChange={e => setConfirmPassword(e.target.value)} 
 disabled={loading}
 /> 
 
 
-<button  type="submit" required disabled={loading} >
- {!loading ? "Submit" : <Loader type="ThreeDots" color="#FFF" height={45} width={50}/>}
+<button  type="submit" required isdisabled={loading} >
+ {!loading ? "Enviar" : <Loader type="ThreeDots" color="#FFF" height={45} width={50}/>}
 </button> 
 
-<span onClick={()=>(history.push("/Login"))} class="password">Switch back to log in</span>
+<span onClick={()=>(history.push("/Login"))} class="password">Voltar para o login</span>
 
 </Info>
 </form>

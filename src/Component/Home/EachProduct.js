@@ -27,7 +27,7 @@ export default function EachProduct({product}){
                     alert("Item adicionado no carrinho!");
                 }
             }}>
-                <span> Add +</span>
+                <span> Adicionar +</span>
             </button>
         </ProductContainer>
     );

@@ -45,7 +45,7 @@ function Header(){
             setProductsList([]);
             return
           } 
-          const req = axios.get(`http://localhost:4000/search?search=${e.target.value}`);
+          const req = axios.get(`https://back-campmarket.herokuapp.com/search?search=${e.target.value}`);
           req.then(({data})=>{
             setShowResult(true);
             setProductsList(data);
@@ -68,16 +68,16 @@ function Header(){
             headers: {
               Authorization: `Bearer ${user.token}`,
             },
-        }; 
+          }; 
       
-        const request = axios.delete(
-        "http://localhost:4000/logOut",
-        config
-        );
-        request.then((response) => {
-            localStorage.removeItem("user") 
-            history.push("/Login")
-        });
+          const request = axios.delete(
+            "https://back-campmarket.herokuapp.com/logOut",
+            config
+          );
+          request.then((response) => {
+              localStorage.removeItem("user") 
+              history.push("/Login")
+          });
     
         request.catch((error) => {
         alert("Falha ao sair!")
@@ -158,13 +158,13 @@ function Header(){
                     </Container>
                     <ProductsMenu showProducts={showProducts} >
                         <Link to={"/category/vegetables"}>
-                            <p>Vegetables</p>
+                            <p>Hortifruti</p>
                         </Link>
                         <Link to={"/category/meat"}>
-                            <p>Meat</p>
+                            <p>Carnes</p>
                         </Link>
                         <Link to={"/category/cold"}>
-                            <p>Cold Products</p>
+                            <p>Frios</p>
                         </Link>
                     </ProductsMenu>
                     <Search showSearch={showSearch}>

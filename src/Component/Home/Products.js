@@ -48,9 +48,14 @@ export default function Products({type, products}){
     return(
         <>
             <Category>
-                <p>{type.toUpperCase()}</p>
+                <p>
+                    {type === "vegetables"? "HORTIFRUTI":
+                    type === "meat"? "CARNES E PEIXES":
+                    type === "cold products"? "FRIOS E LATICÍNIOS":
+                    null}
+                </p>
                 <button onClick={goToCategory}>
-                    See more +
+                    Veja mais +
                 </button>
             </Category>
             <Carousel 

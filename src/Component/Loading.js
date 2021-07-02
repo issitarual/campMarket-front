@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import Loader from "react-loader-spinner";
 
-export default function Loading(){
+export default function Loading({ page }){
     return(
-        <Container>
+        <Container page={page}>
             <Loader type="TailSpin" color="#3F3F40" height={80} width={80} />
-            <h1>Loading</h1>
+            <h1>Carregando</h1>
             <span>
                 <Loader type="ThreeDots" color="#3F3F40" height={20} width={20} />
             </span>
@@ -22,7 +22,7 @@ const Container = styled.div`
     margin: 20px auto;
     span{
         position: absolute;
-        bottom: -9px;
+        bottom: ${props=>props.page === "product"? "-25px":"-9px"};
         right: -25px;
     }
     h1{

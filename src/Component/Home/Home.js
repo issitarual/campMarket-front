@@ -10,7 +10,7 @@ import { Container } from "./homeStyles";
 export default function Home (){
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        const request = axios.get("http://localhost:4000/products");
+        const request = axios.get("https://back-campmarket.herokuapp.com/products");
 
         request.then(success => setProducts(success.data));
         request.catch(error => alert("Algo deu errado, tente mais tarde!"));
@@ -25,10 +25,12 @@ export default function Home (){
     return(
         <Container>
             <Delivery/>
-            {products.length === 0? <Loading/>: null}
             <Products type={"vegetables"} products={vegetables}/>
+            {products.length === 0? <Loading page={"home"}/>: null}
             <Products type={"cold products"} products={coldProducts}/>
+            {products.length === 0? <Loading page={"home"}/>: null}
             <Products type={"meat"} products={meat}/>
+            {products.length === 0? <Loading page={"home"}/>: null}
             <Footer/>
         </Container>
     )

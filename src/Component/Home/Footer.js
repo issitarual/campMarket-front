@@ -2,11 +2,11 @@ import { FooterContainer, CreditCard, Logo, Media } from "./homeStyles";
 import { CartOutline } from 'react-ionicons';
 import { SiInstagram, SiFacebook, SiTwitter, SiYoutube } from "react-icons/si";
 
-export default function Footer (){
+export default function Footer ({page}){
     return(
-        <FooterContainer>
+        <FooterContainer page={page}>
             <CreditCard>
-                <h5>Credit Cards</h5>
+                <h5>Cartões de Crédito</h5>
                 <img src="https://zonasul.vtexassets.com/arquivos/logos-pagamentos.png" alt="credit cards"/>
             </CreditCard>
             <Logo>
@@ -17,8 +17,8 @@ export default function Footer (){
                 />
                 <h5>Camp<br/>Market</h5>
             </Logo>
-            <Media>
-                <p>Follow Our Social Media</p>
+            <Media page={page}> 
+                <p>Siga nossas redes sociais</p>
                 <span>
                     <div onClick={() => socialMedia("instagram")}>
                         <SiInstagram color="#fff"/>

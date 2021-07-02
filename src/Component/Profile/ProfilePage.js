@@ -29,7 +29,7 @@ export default function ProfilePage(){
     
     const body = { name:nameEdit, email:emailEdit};
     const request = axios.put(
-      "http://localhost:4000/Account",
+      "https://back-campmarket.herokuapp.com/Account",
       body,config
     );
 
@@ -57,13 +57,13 @@ export default function ProfilePage(){
        { user
        ?
            <ProfileContainer>
-             <h1>Welcome, {user.name}!</h1>
-             <h2>My account</h2>
+             <h1>Bem-vindo(a), {user.name}!</h1>
+             <h2>Meu perfil</h2>
              
              <UserInfo>
 
             <form onSubmit={EditAccount}>
-             <Account user={user.name} edit ={nameEdit} setEdit={setNameEdit} clicked={clicked} loading={loading} text="Name"/>
+             <Account user={user.name} edit ={nameEdit} setEdit={setNameEdit} clicked={clicked} loading={loading} text="Nome"/>
              <Account user={user.email} edit ={emailEdit} setEdit={setEmailEdit} clicked={clicked} loading={loading}  text="E-mail"/>
              </form>
              <Buttons>
@@ -72,15 +72,15 @@ export default function ProfilePage(){
                      {clicked?
                      <>
                      <button disabled={loading} className="save" onClick={()=>(EditAccount())}>
-                     {!loading ? "Save" : <Loader type="ThreeDots" color="#FFF" height={45} width={50}/>}
+                     {!loading ? "Salvar" : <Loader type="ThreeDots" color="#FFF" height={45} width={50}/>}
                     </button> 
                     <button disabled={loading} onClick={()=>(setCliked(!clicked))}>
-                     {!loading ? "Cancel" : <Loader type="ThreeDots" color="#FFF" height={45} width={50}/>}
+                     {!loading ? "Cancelar" : <Loader type="ThreeDots" color="#FFF" height={45} width={50}/>}
                     </button>
                     </>
                     :
                      <button disabled={loading} onClick={()=>(setCliked(!clicked))}>
-                     {!loading ? "Change" : <Loader type="ThreeDots" color="#FFF" height={45} width={50}/>}
+                     {!loading ? "Salvar" : <Loader type="ThreeDots" color="#FFF" height={45} width={50}/>}
                     </button> 
                  }
                  

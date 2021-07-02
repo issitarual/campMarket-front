@@ -9,7 +9,7 @@ export default function ProductPage({productId}){
     const {cart, setCart} = useContext(CartContext);
     const [product, setProduct] = useState({});
     useEffect(() => {
-        const request = axios.get(`http://localhost:4000/product/${productId}`);
+        const request = axios.get(`https://back-campmarket.herokuapp.com/product/${productId}`);
 
         request.then(success => setProduct(success.data));
         request.catch(error => alert("Algo deu errado, tente mais tarde!"));
@@ -19,13 +19,13 @@ export default function ProductPage({productId}){
 
     return(
         <Container>
-            {product ===  {}? <Loading/>: null}
+            {product ===  {}? <Loading page={"each product"}/>: null}
             <Product>
                 <img src={image} alt={name}/>
                 <div>
                     <h2>{name}</h2>
                     <span>
-                        <h3>for R${price}</h3>
+                        <h3>por R${price}</h3>
                         <button onClick={(e) => {
                             e.stopPropagation();
                             let found = cart.find((item)=>item.product.name === product.name);
@@ -39,9 +39,9 @@ export default function ProductPage({productId}){
                                 localStorage.setItem("cart", JSON.stringify([...cart, {product, qtd}]));
                                 alert("Item adicionado no carrinho!");
                             }
-                        }}>Add +</button>
+                        }}>Adicionar +</button>
                     </span>
-                    <h4>Descripction</h4>
+                    <h4>Descrição</h4>
                     <p>{description}</p>
                 </div>
             </Product>

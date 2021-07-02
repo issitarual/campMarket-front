@@ -25,7 +25,7 @@ function Sidebar({isOpen ,setIsOpen, cartIsOpen, setCartIsOpen}){
           }; 
       
           const request = axios.delete(
-            "http://localhost:4000/logOut",
+            "https://back-campmarket.herokuapp.com/logOut",
             config
           );
           request.then((response) => {
@@ -52,28 +52,28 @@ function Sidebar({isOpen ,setIsOpen, cartIsOpen, setCartIsOpen}){
                                 <Link to={"/"} />
                             </MenuItem>
                             <MenuItem onClick={()=>setCartIsOpen(!cartIsOpen)} icon={<FiShoppingCart />}>
-                                Cart
+                                Carrinho
                             </MenuItem>
                             <MenuItem icon={<BsFillPersonFill />}>
-                                Profile
-                                <Link to={"/profile"} />
+                                Perfil
+                                <Link to={user?"/profile":"/Login"} />
                             </MenuItem>
-                            <SubMenu icon={<IoFastFoodSharp />} title="Products">
+                            <SubMenu icon={<IoFastFoodSharp />} title="Categorias">
                                 <MenuItem>
-                                    <p>Vegetables</p>
+                                    <p>Hortifruti</p>
                                     <Link to={"/category/vegetables"} />
                                 </MenuItem>
                                 <MenuItem>
-                                    <p>Meat</p>
+                                    <p>Carnes e Peixes</p>
                                     <Link to={"/category/meat"} />
                                 </MenuItem>
                                 <MenuItem>
-                                    <p>Cold Products</p>
+                                    <p>Frios e laticínios</p>
                                     <Link to={"/category/cold"} />
                                 </MenuItem>
                             </SubMenu>
                             <MenuItem onClick={()=>setIsOpen(!isOpen)} icon={<BsSearch />}>
-                                Search
+                                Busca
                             </MenuItem>
                         </Menu>
                     </SidebarContent>
