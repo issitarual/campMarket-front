@@ -11,7 +11,6 @@ import { useHistory } from 'react-router';
 export default function ProfilePage(){  
     const history= useHistory();
     const {user,setUser} = useContext(UserContext);
-    console.log(user);
     const [clicked,setCliked] = useState(false);
     const [nameEdit,setNameEdit]=useState(user?user.name:"");
     const [emailEdit,setEmailEdit]=useState(user?user.email:"");
@@ -40,11 +39,11 @@ export default function ProfilePage(){
         setLoading(false);    
         setUser(response.data)
         localStorage.setItem("user", JSON.stringify(response.data));
-        alert("Your data has been successfully changed!");
+        alert("Seus dados foram alterados com sucesso!");
     });
 
     request.catch((error) => {
-     alert("Unable to save account changes!");
+     alert("Não foi possível fazer essa alteração!");
       setLoading(false);
       console.log(error);
     });
@@ -80,7 +79,7 @@ export default function ProfilePage(){
                     </>
                     :
                      <button disabled={loading} onClick={()=>(setCliked(!clicked))}>
-                     {!loading ? "Salvar" : <Loader type="ThreeDots" color="#FFF" height={45} width={50}/>}
+                     {!loading ? "Editar" : <Loader type="ThreeDots" color="#FFF" height={45} width={50}/>}
                     </button> 
                  }
                  
