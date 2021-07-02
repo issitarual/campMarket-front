@@ -1,9 +1,9 @@
-import Delivery from "./Delivery";
 import Products from "./Products";
 import Footer from "./Footer";
 import Loading from "../Loading";
 
 import axios from 'axios';
+import Delivery from "./Delivery";
 import { useEffect, useState } from "react";
 import { Container } from "./homeStyles";
 

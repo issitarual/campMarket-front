@@ -5,24 +5,23 @@ import Delivery from '../Component/Home/Delivery';
 import SearchFeature from "../Component/SearchFeature";
 import styled from 'styled-components';
 import { useState } from 'react';
+import Cart from '../Component/Cart';
 import ProfilePage from "../Component/Profile/ProfilePage";
 
 
 export default function Profile(){
     const [isOpen, setIsOpen] = useState(false);
+    const [cartIsOpen, setCartIsOpen] = useState(false);
 
     return(
         <>
         <Main>
             <Header />
-            
-            <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
-            
             <Delivery />
+            <ProfilePage/>
+            <Cart cartIsOpen={cartIsOpen} setCartIsOpen={setCartIsOpen} />
+            <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} cartIsOpen={cartIsOpen} setCartIsOpen={setCartIsOpen}/>
             <SearchFeature isOpen={isOpen} setIsOpen={setIsOpen} />
-
-           
-             <ProfilePage/>
 
         </Main>
         </>

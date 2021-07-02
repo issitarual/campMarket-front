@@ -5,15 +5,14 @@ import axios from 'axios';
 import { useHistory } from "react-router";
 import UserContext from "../Context/UserContext";
 
-function Login(){
+function Login() {
+  const { setUser } = useContext(UserContext);
+  const history = useHistory();
+  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-const {setUser} = useContext(UserContext);
-const history=useHistory();     
-const [loading,setLoading]=useState(false);
-const [email,setEmail]=useState("");
-const [password,setPassword]=useState("");
-
-function login(e){
+  function login(e) {
     e.preventDefault();
     const body = { email, password };
     const request = axios.post(
@@ -24,65 +23,59 @@ function login(e){
     setLoading(true);
 
     request.then((response) => {
-
       setUser(response.data);
       localStorage.setItem("user", JSON.stringify(response.data));
       history.push("/");
     });
 
     request.catch((error) => {
-        setLoading(false);
-        if(error.response.status===401) alert("Falha no login, email ou senha incorretos!");
-     
+      setLoading(false);
+      if (error.response.status === 401)
+        alert("Falha no login, email ou senha incorretos!");
     });
-} 
+  }
 
-
-    return(
-<>
-<Body>
-<Logo>CampMarket</Logo>
-
-
-
-<form onSubmit={login}>
-
-<Info>
-<input
-type="email"
-required
-placeholder="E-mail"
-value={email} 
-onChange={e => setEmail(e.target.value)} 
-disabled={loading}
-/>  
-
-<input
-type="password"
-required
-placeholder="Senha"
-value={password} 
-onChange={e => setPassword(e.target.value)} 
-disabled={loading}
-/>  
-
-<div onClick={()=>(history.push("/change_password"))}><span class="password">Esqueceu a senha?</span></div>
-
-
-<button  type="submit" required isdisabled={loading} >
- {!loading ? "Entrar" : <Loader type="ThreeDots" color="#FFF" height={45} width={50}/>}
-</button> 
-
-</Info>
-</form>
-
-<span onClick={()=>(history.push("/SignUp"))}> Primeira vez? Crie uma conta!</span>
-
-</Body>
-</>
-
-    );
-
+  return (
+    <>
+      <Body>
+        <Logo>CampMarket</Logo>
+        <form onSubmit={login}>
+          <Info>
+            <input
+              type="email"
+              required
+              placeholder="E-mail"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              disabled={loading}
+            />
+            <input
+              type="password"
+              required
+              placeholder="Senha"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              disabled={loading}
+            />
+            <div onClick={() => history.push("/change_password")}>
+              <span className="password">Esqueceu a senha?</span>
+            </div>
+            <button type="submit" required disabled={loading}>
+              {!loading ? (
+                "Entrar"
+              ) : (
+                <Loader type="ThreeDots" color="#FFF" height={45} width={50} />
+              )}
+            </button>
+          </Info>
+        </form>
+        <span onClick={() => history.push("/SignUp")}>
+          {" "}
+          Primeira vez? Crie uma conta!
+        </span>
+      </Body>
+    </>
+  );
 }
 
 const Body =styled.div `

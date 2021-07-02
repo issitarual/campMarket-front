@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-
 import Footer from '../Home/Footer';
 import EachProduct from '../Home/EachProduct';
 import { Container } from './CategoryStyles';

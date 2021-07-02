@@ -5,13 +5,16 @@ import axios from 'axios';
 import UserContext from "../../Context/UserContext";
 import Account from './AccountDetails';
 import Loader from 'react-loader-spinner';
+import { useHistory } from 'react-router';
 
 
 export default function ProfilePage(){  
+    const history= useHistory();
     const {user,setUser} = useContext(UserContext);
+    console.log(user);
     const [clicked,setCliked] = useState(false);
-    const [nameEdit,setNameEdit]=useState(user.name);
-    const [emailEdit,setEmailEdit]=useState(user.email);
+    const [nameEdit,setNameEdit]=useState(user?user.name:"");
+    const [emailEdit,setEmailEdit]=useState(user?user.email:"");
     
     const [loading,setLoading]=useState(false);
     
@@ -90,13 +93,64 @@ export default function ProfilePage(){
              <Footer/>
              </ProfileContainer>
             : 
-            ""
+            <NoUser>
+             <span>Cadastre-se ou faça login para acessar seu perfil!</span>
+
+             <button disabled={loading} onClick={()=>(history.push("/Login"))}>
+                     {!loading ? "Login" : <Loader type="ThreeDots" color="#FFF" height={45} width={50}/>}
+            </button> 
+            </NoUser>
+            
             }
              </>
     )
     
 }
 
+const NoUser = styled.div ` 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    padding-right: 30px;
+    padding-left: 30px;
+    margin-left: 200px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 1px;
+span{
+    display:block;
+    margin-top:20vw;
+    font-size: 30px;
+    color:#696969;
+    font-weight: bold;
+    text-align: center;
+}
+
+button{
+    margin-top:70px;
+    margin-left:auto;
+    margin-right:auto;
+    background-color: 	#f66a6a;
+        border: none;
+        border-radius: 10px;
+        padding: 5px;
+        width: 180px;
+        height:58px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        color:#fff;
+        font-size:30px;
+        font-weight: bold;
+}
+
+@media (max-width: 450px){
+        margin-left: 0;
+        margin-top: 125px;
+}
+`;
 const ProfileContainer = styled.div`
     display: flex;
     flex-direction: column;
