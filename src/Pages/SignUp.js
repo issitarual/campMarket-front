@@ -23,7 +23,7 @@ function signUP(e){
     
     const body = { name, email, password, confirmPassword };
     const request = axios.post(
-      "https://git.heroku.com/back-campmarket.git/signUp",
+      "https://back-campmarket.herokuapp.com/signUp",
       body
     );
 

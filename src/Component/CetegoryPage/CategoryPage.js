@@ -10,7 +10,7 @@ export default function CategoryPage({name}){
     if(name === "cold") name = "cold products"
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        const request = axios.get(`https://git.heroku.com/back-campmarket.git/category/${name}`);
+        const request = axios.get(`https://back-campmarket.herokuapp.com/category/${name}`);
 
         request.then(success => setProducts(success.data));
         request.catch(error => alert("Algo deu errado, tente mais tarde!"));

@@ -26,7 +26,7 @@ export default function ProfilePage(){
     
     const body = { name:nameEdit, email:emailEdit};
     const request = axios.put(
-      "https://git.heroku.com/back-campmarket.git/Account",
+      "https://back-campmarket.herokuapp.com/Account",
       body,config
     );
 

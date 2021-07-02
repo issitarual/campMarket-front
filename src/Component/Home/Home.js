@@ -10,7 +10,7 @@ import { Container } from "./homeStyles";
 export default function Home (){
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        const request = axios.get("https://git.heroku.com/back-campmarket.git/products");
+        const request = axios.get("https://back-campmarket.herokuapp.com/products");
 
         request.then(success => setProducts(success.data));
         request.catch(error => alert("Algo deu errado, tente mais tarde!"));

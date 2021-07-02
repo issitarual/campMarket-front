@@ -17,7 +17,7 @@ function login(e){
     e.preventDefault();
     const body = { email, password };
     const request = axios.post(
-      "https://git.heroku.com/back-campmarket.git/Login",
+      "https://back-campmarket.herokuapp.com/Login",
       body
     );
 
