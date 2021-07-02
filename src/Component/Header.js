@@ -86,22 +86,26 @@ function Header(){
 
     function increaseQtd(product){
         product.qtd = product.qtd+1
-        setCart([...cart])
+        setCart([...cart]);
+        localStorage.setItem("cart", JSON.stringify([...cart]));
     }
 
     function decreaseQtd(product){
         product.qtd = product.qtd-1
         if(product.qtd === 0){
             const newCartFiltered = cart.filter((item)=>item !== product);
-            setCart([...newCartFiltered])
+            setCart([...newCartFiltered]);
+            localStorage.setItem("cart", JSON.stringify([...newCartFiltered]));
         } else {
-            setCart([...cart])
+            setCart([...cart]);
+            localStorage.setItem("cart", JSON.stringify([...cart]));
         }
     }
 
     function removeProduct(product){
         const newCartFiltered = cart.filter((item)=>item !== product);
-        setCart([...newCartFiltered])
+        setCart([...newCartFiltered]);
+        localStorage.setItem("cart", JSON.stringify([...newCartFiltered]));
     }
 
     function attemptToPurchase(){
@@ -172,7 +176,8 @@ function Header(){
                                 <DebounceInput 
                                     type="text"
                                     value={searchText}
-                                    debounceTimeout={300}
+                                    minLength={3}
+                                    debounceTimeout={0}
                                     className="debounceInputHeader"
                                     onChange={(e)=>{AttemptToSearch(e);setSearchText(e.target.value)}}
                                     placeholder="Search bar"
@@ -266,6 +271,7 @@ const CartMobile = styled.div`
     height: 100vh;
     background-color: #fff;
     padding-top: 95px;
+    overflow-y: scroll;
 `
 
 const Price = styled.div`
@@ -274,6 +280,7 @@ const Price = styled.div`
     p{
         max-width: 110px;
         min-width: 110px;
+        word-break: break-word;
     }
     span{
         padding-left: 10px;
@@ -310,6 +317,7 @@ const Footer = styled.div`
     text-align: center;
     justify-content: center;
     align-items: center;
+    margin-bottom: 50px;
     button{
         margin-top: 20px;
         border: none;
@@ -320,12 +328,13 @@ const Footer = styled.div`
         border-radius: 5px;
     }
     h1{
-        padding-top: 80px;
+        padding-top: 30px;
     }
 `
 
 const EachProductOnCartMobile = styled.div`
     width: 100%;
+    height: fit-content;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -377,11 +386,9 @@ const Result = styled.div`
   width: 100%;
   background-color: #fff;
   height: fit-content;
-  gap: 10px;
   span {
     color: #515151;
     font-size: 17px;
-    padding-left: 5px;
   }
 `
 
