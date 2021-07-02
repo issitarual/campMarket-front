@@ -128,7 +128,7 @@ function Header(){
             req.then(()=>{
                 localStorage.clear();
                 setCart([]);
-                setShowProducts(false);
+                setShowCart(false);
                 alert("Compra realizada com sucesso!");
             })
         }
