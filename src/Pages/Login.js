@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import Loader from 'react-loader-spinner';
-import { useState, useContext } from 'react';
-import axios from 'axios';
+import styled from "styled-components";
+import Loader from "react-loader-spinner";
+import { useState, useContext } from "react";
+import axios from "axios";
 import { useHistory } from "react-router";
 import UserContext from "../Context/UserContext";
 
@@ -78,91 +78,86 @@ function Login() {
   );
 }
 
-const Body =styled.div `
+const Body = styled.div`
   background-image: linear-gradient(#f6e9c7, #b3e4e1);
   width: 100vw;
   height: 100vh;
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
   flex-direction: column;
-div{
+  div {
     display: flex;
     align-items: flex-start;
-    span{
-        text-decoration-line: none;
-        color:#5F9EA0;
+    span {
+      text-decoration-line: none;
+      color: #5f9ea0;
     }
-}
-span{
-    cursor:pointer;
+  }
+  span {
+    cursor: pointer;
     color: grey;
     font-size: 20px;
     text-decoration-line: underline;
-
-}
+  }
 `;
 
 const Logo = styled.div`
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
-    margin:50px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  margin: 50px;
+  display: flex;
+  height: 60px;
+  font-size: 40px;
+  color: #000;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+`;
+
+const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  input {
+    width: 429px;
+    height: 58px;
+    background: #fff;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 13px;
+    padding: 5px;
+  }
+
+  button {
+    cursor: pointer;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    width: 429px;
+    height: 58px;
+    background: #ebe6d8;
+    border: none;
+    border-radius: 5px;
+    padding: 13px;
     display: flex;
-    height: 60px;
-    font-size: 40px;
-    color: #000;
     align-items: center;
     justify-content: center;
-    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+    color: grey;
+  }
 
+  @media (max-width: 450px) {
+    width: 90vw;
+    input {
+      width: 100%;
+    }
+    button {
+      width: 100%;
+    }
+  }
 `;
-
-const Info =styled.div ` 
-
-display: flex;
-flex-direction:column ;
-align-items: center;
-justify-content: space-between;
-
-
-input{
-width: 429px;
-height: 58px;
-background: #fff;
-border-radius: 5px;
-border:none;
-margin-bottom: 13px;
-padding: 5px;
-}
-
-button{
-cursor:pointer;
-margin-top:40px;
-margin-bottom:50px;
-width: 429px;
-height: 58px;
-background:#ebe6d8;
-border:none;
-border-radius: 5px;
-padding:13px;
-display:flex;
-align-items: center;
-justify-content: center;
-font-weight: bold;
-font-size: 20px;
-line-height: 23px;
-color: grey;
-}
-
-@media (max-width: 450px){
-width:90vw;
-input{
-    width: 100%;
-}
-button{
-    width:100%;
-}
-}
-`;
-
 
 export default Login;

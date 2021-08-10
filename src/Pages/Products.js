@@ -15,7 +15,12 @@ function Products() {
       <Header />
       <Home />
       <Cart cartIsOpen={cartIsOpen} setCartIsOpen={setCartIsOpen} />
-      <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} cartIsOpen={cartIsOpen} setCartIsOpen={setCartIsOpen}/>
+      <Sidebar
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        cartIsOpen={cartIsOpen}
+        setCartIsOpen={setCartIsOpen}
+      />
       <SearchFeature isOpen={isOpen} setIsOpen={setIsOpen} />
     </Main>
   );
@@ -26,7 +31,7 @@ const Main = styled.div`
   width: 100%;
   min-height: 100vh;
   height: 100%;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   @media (max-width: 450px) {
     display: flex;
     flex-direction: column;

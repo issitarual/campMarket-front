@@ -15,16 +15,26 @@ function App() {
   const [user, setUser] = useState();
   const [cart, setCart] = useState([]);
   return (
-    <UserContext.Provider value={{ user: user || JSON.parse(localStorage.getItem("user")), setUser }}>
-      <CartContext.Provider value={{ cart:cart|| JSON.parse(localStorage.getItem("cart")), setCart }} >
+    <UserContext.Provider
+      value={{
+        user: user || JSON.parse(localStorage.getItem("user")),
+        setUser,
+      }}
+    >
+      <CartContext.Provider
+        value={{
+          cart: cart || JSON.parse(localStorage.getItem("cart")),
+          setCart,
+        }}
+      >
         <BrowserRouter>
           <GlobalStyles />
           <Switch>
             <Route path="/" exact component={Products} />
             <Route path="/Login" exact component={Login} />
             <Route path="/SignUp" exact component={SignUp} />
-            <Route path="/category/:categoryName" exact component={Category}/>
-            <Route path="/product/:productId" exact component={Product}/>
+            <Route path="/category/:categoryName" exact component={Category} />
+            <Route path="/product/:productId" exact component={Product} />
             <Route path="/profile" exact component={Profile} />
             <Route path="/change_password" exact component={Password} />
           </Switch>
