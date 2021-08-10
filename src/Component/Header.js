@@ -135,6 +135,9 @@ function Header(){
                 setShowCart(false);
                 alert("Compra realizada com sucesso!");
             })
+            req.catch(()=>{
+                alert("Algo deu errado, tente mais tarde!");
+            });
         }
     }
 

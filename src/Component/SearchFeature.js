@@ -21,7 +21,7 @@ function SearchFeature({ isOpen, setIsOpen }){
         setProductsList(data);
       });
       req.catch((err)=>{
-        alert("Something wrong happened!")
+        alert("Algo deu errado, tente mais tarde!");
       });
     }
 

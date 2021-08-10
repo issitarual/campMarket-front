@@ -212,6 +212,7 @@ const Media = styled.div`
     span{
         display: flex;
         justify-content: space-between;
+        width: 100%;
     }
     div{
         background-color: #3F3F40;

@@ -43,9 +43,8 @@ export default function ProfilePage(){
     });
 
     request.catch((error) => {
-     alert("Não foi possível fazer essa alteração!");
-      setLoading(false);
-      console.log(error);
+        alert("Não foi possível fazer essa alteração!");
+        setLoading(false);
     });
 
         }
