@@ -4,7 +4,10 @@
 ![Tux, linkr preview](/assets/campmarket.gif)
 #### [Try it now!](https://camp-market-front.vercel.app)
 ## About 🔎
-This is an web aplication made in contribution with [Yann](https://github.com/Liaess) and [Ana](https://github.com/Ana-Laura-Simoes/) wich anyone with an e-mail can buy on this market.
+This is an web aplication wich anyone with an e-mail can buy on this market. This project was made by the following developers and we worked one sprint based on agile mindset scrum.
+- [Ana Laura Simões](https://github.com/Ana-Laura-Simoes/)
+- [Laura Tissi Tracierra Rezende](https://github.com/issitarual/)
+- [Yann Melo Eduardo](https://github.com/Liaess)
 ### Implemented features ✅
 - [x] Sign up 
 - [x] Log in
