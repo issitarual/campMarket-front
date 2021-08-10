@@ -17,29 +17,23 @@ export default function Account({user,edit,setEdit,clicked,text,loading}){
        
     }
 
-return(
-
-    
-            <Info>
+    return(
+        <Info>
             <span>{text}:</span>     
-            {clicked?
-            <input
-            ref={inputRef}
-            placeholder=""
-            value={edit}
-            disabled={loading}
-            onChange={handleChange}
-            />
-            
-        :
-        <div>
-        <p>{user}</p>
-        </div>
+            {
+                clicked?
+                <input
+                ref={inputRef}
+                placeholder=""
+                value={edit}
+                disabled={loading}
+                onChange={handleChange}
+                />:
+                <div>
+                    <p>{user}</p>
+                </div>
             }
         </Info>            
-
-
-
 );
 
 }

@@ -19,7 +19,7 @@ function Cart({ cartIsOpen, setCartIsOpen }){
         }
     },[]) //eslint-disable-line
     if(cart){
-        cart.map(p => {
+        cart.forEach(p => {
             let sum = ((p.product.price.replace(",",".") * p.qtd))
             Total = Total + sum
         })

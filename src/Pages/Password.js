@@ -41,53 +41,42 @@ function ChangePassword (e){
 }     
 
 
-    return(
+  return(
         <Body>
         <Logo>CampMarket</Logo>
-
         <h1>Mudar Senha</h1>
-  
-
         <form onSubmit={ChangePassword}>
-
-<Info>
-<input
-type="email"
-required
-placeholder="E-mail"
-value={email} 
-onChange={e => setEmail(e.target.value)} 
-disabled={loading}
-/>  
-
-<input
-type="password"
-required
-placeholder="Senha"
-value={password} 
-onChange={e => setPassword(e.target.value)} 
-disabled={loading}
-/>  
-
-<input
-type="password"
-required
-placeholder="Confirmar Senha"
-value={confirmPassword} 
-onChange={e => setConfirmPassword(e.target.value)} 
-disabled={loading}
-/> 
-
-
-<button  type="submit" required isdisabled={loading} >
- {!loading ? "Enviar" : <Loader type="ThreeDots" color="#FFF" height={45} width={50}/>}
-</button> 
-
-<span onClick={()=>(history.push("/Login"))} class="password">Voltar para o login</span>
-
-</Info>
-</form>
-
+          <Info>
+            <input
+              type="email"
+              required
+              placeholder="E-mail"
+              value={email} 
+              onChange={e => setEmail(e.target.value)} 
+              disabled={loading}
+            />  
+            <input
+              type="password"
+              required
+              placeholder="Senha"
+              value={password} 
+              onChange={e => setPassword(e.target.value)} 
+              disabled={loading}
+            />  
+            <input
+              type="password"
+              required
+              placeholder="Confirmar Senha"
+              value={confirmPassword} 
+              onChange={e => setConfirmPassword(e.target.value)} 
+              disabled={loading}
+            /> 
+            <button  type="submit" required isdisabled={loading} >
+              {!loading ? "Enviar" : <Loader type="ThreeDots" color="#FFF" height={45} width={50}/>}
+            </button> 
+            <span onClick={()=>(history.push("/Login"))} class="password">Voltar para o login</span>
+          </Info>
+        </form>
     </Body>
     )
 }

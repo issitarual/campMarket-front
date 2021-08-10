@@ -149,14 +149,52 @@ function Header(){
                         <Link to={"/"}>
                             <FiHome style={{width: "25px", height: "25px"}}/>
                         </Link>
-                        <FiShoppingCart onClick={()=> {setShowSearch(false);setShowProducts(false);setShowCart(!showCart)}} style={{width: "25px", height: "25px"}}/>
+                        <FiShoppingCart 
+                            onClick={()=> {
+                                setShowSearch(false);
+                                setShowProducts(false);
+                                setShowCart(!showCart);
+                            }} 
+                            style={{
+                                width: "25px", 
+                                height: "25px"
+                            }}
+                        />
                         <Link to={"/profile"}>
-                            <BsFillPersonFill style={{width: "25px", height: "25px"}}/>
+                            <BsFillPersonFill 
+                                style={{
+                                    width: "25px", 
+                                    height: "25px"
+                                }}
+                            />
                         </Link>
-                        <IoFastFoodSharp onClick={()=>{setShowCart(false);setShowSearch(false);setShowProducts(!showProducts)}} style={{width: "25px", height: "25px"}}/>
-                        <BsSearch onClick={()=>{setShowCart(false);setShowProducts(false);setShowSearch(!showSearch)}} style={{width: "25px", height: "25px"}}/>
+                        <IoFastFoodSharp 
+                            onClick={()=>{
+                                setShowCart(false);
+                                setShowSearch(false);
+                                setShowProducts(!showProducts);
+                            }} 
+                            style={{
+                                width: "25px", 
+                                height: "25px"
+                            }}
+                        />
+                        <BsSearch 
+                            onClick={()=>{
+                                setShowCart(false);
+                                setShowProducts(false);
+                                setShowSearch(!showSearch);
+                            }} 
+                            style={{
+                                width: "25px", 
+                                height: "25px"
+                            }}
+                        />
                         {user ? 
-                            <BsBoxArrowRight style={{width: "25px", height: "25px"}} onClick={()=>(logOut())} />
+                            <BsBoxArrowRight 
+                                style={{width: "25px", height: "25px"}} 
+                                onClick={()=>(logOut())} 
+                            />
                             :
                             <Link to={"/Login"}>
                                 <AiOutlineLogin style={{width: "25px", height: "25px"}}/>
@@ -198,7 +236,15 @@ function Header(){
                                     }
                                 </Result>
                             </ResultMenu>
-                            <Button onClick={()=>{setSearchText("");setShowSearch(false);setProductsList([]);}}>Cancel</Button>
+                            <Button 
+                                onClick={()=>{
+                                    setSearchText("");
+                                    setShowSearch(false);
+                                    setProductsList([]);
+                                }}
+                            >
+                                Cancel
+                            </Button>
                     </Search>
                     <AllCartMobile showCart={showCart}>
                         {cart.length === 0?
@@ -210,7 +256,11 @@ function Header(){
                         <CartMobile>
                             {cart.map((p,i)=>
                                 <EachProductOnCartMobile key={i}>
-                                    <IoTrashBin size={"30px"} cursor={"pointer"} onClick={()=>removeProduct(p)}/>
+                                    <IoTrashBin 
+                                        size={"30px"} 
+                                        cursor={"pointer"} 
+                                        onClick={()=>removeProduct(p)}
+                                    />
                                     <img src={p.product.image} alt={p.product.name}></img>
                                     <Price>
                                         <p>{p.product.name}</p>
@@ -226,8 +276,19 @@ function Header(){
                             )}
                                 <Footer>
                                     <h1>Total: {(Total.toLocaleString("pt-BR", {style: 'currency', currency: 'BRL' }).replace(".",","))}</h1>
-                                    <button onClick={()=>attemptToPurchase()}>Finalizar compra</button>
-                                    <button onClick={()=>{setCart([]);localStorage.clear()}}>Limpar o carrinho</button>
+                                    <button 
+                                        onClick={()=>attemptToPurchase()}
+                                    >
+                                        Finalizar compra
+                                    </button>
+                                    <button 
+                                        onClick={()=>{
+                                            setCart([]);
+                                            localStorage.clear()
+                                        }}
+                                    >
+                                        Limpar o carrinho
+                                    </button>
                                 </Footer>
                         </CartMobile>
                         }

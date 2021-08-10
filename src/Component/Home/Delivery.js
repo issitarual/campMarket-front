@@ -10,7 +10,7 @@ export default function Delivery(){
                     height="25px"
                     width="25px"
                 />
-                <div></div>
+                <div/>
                 <span>
                     <h6>Entregamos em</h6>
                     <p>Rio de Janeiro,RJ</p>
