@@ -31,6 +31,9 @@ const Main = styled.div`
   height: 100%;
   min-height: 100vh;
   font-family: 'Roboto', sans-serif;
+  @media(max-width: 450px){
+    margin-top: 125px;
+  }
 `;
 
 export default Category;
