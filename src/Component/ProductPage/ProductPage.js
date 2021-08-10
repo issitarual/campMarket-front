@@ -9,7 +9,7 @@ export default function ProductPage({productId}){
     const {cart, setCart} = useContext(CartContext);
     const [product, setProduct] = useState({});
     useEffect(() => {
-        const request = axios.get(`https://back-campmarket.herokuapp.com/product/${productId}`);
+        const request = axios.get(`${process.env.REACT_APP_API_BASE_URL}/product/${productId}`);
 
         request.then(success => setProduct(success.data));
         request.catch(error => alert("Algo deu errado, tente mais tarde!"));

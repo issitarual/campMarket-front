@@ -45,7 +45,7 @@ function Header(){
             setProductsList([]);
             return
           } 
-          const req = axios.get(`https://back-campmarket.herokuapp.com/search?search=${e.target.value}`);
+          const req = axios.get(`${process.env.REACT_APP_API_BASE_URL}/search?search=${e.target.value}`);
           req.then(({data})=>{
             setShowResult(true);
             setProductsList(data);
@@ -71,7 +71,7 @@ function Header(){
           }; 
       
           const request = axios.delete(
-            "https://back-campmarket.herokuapp.com/logOut",
+            `${process.env.REACT_APP_API_BASE_URL}/logOut`,
             config
           );
           request.then((response) => {

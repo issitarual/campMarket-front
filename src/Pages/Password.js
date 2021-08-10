@@ -21,7 +21,7 @@ function ChangePassword (e){
     
     const body = { email, password, confirmPassword };
     const request = axios.put(
-      "https://back-campmarket.herokuapp.com/change_password",
+      `${process.env.REACT_APP_API_BASE_URL}/change_password`,
       body
     );
 

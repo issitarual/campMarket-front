@@ -25,7 +25,7 @@ function Sidebar({isOpen ,setIsOpen, cartIsOpen, setCartIsOpen}){
           }; 
       
           const request = axios.delete(
-            "https://back-campmarket.herokuapp.com/logOut",
+            `${process.env.REACT_APP_API_BASE_URL}/logOut`,
             config
           );
           request.then((response) => {

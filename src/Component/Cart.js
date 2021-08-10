@@ -70,7 +70,7 @@ function Cart({ cartIsOpen, setCartIsOpen }){
             const body = {
                 cart,
             }
-            const req = axios.post('https://back-campmarket.herokuapp.com/finish', body, config)
+            const req = axios.post(`${process.env.REACT_APP_API_BASE_URL}/finish`, body, config)
             req.then(()=>{
                 localStorage.clear();
                 setCart([]);

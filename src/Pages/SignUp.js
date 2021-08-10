@@ -23,7 +23,7 @@ function signUP(e){
     
     const body = { name, email, password, confirmPassword };
     const request = axios.post(
-      "https://back-campmarket.herokuapp.com/signUp",
+      `${process.env.REACT_APP_API_BASE_URL}/signUp`,
       body
     );
 

@@ -28,7 +28,7 @@ export default function ProfilePage(){
     
     const body = { name:nameEdit, email:emailEdit};
     const request = axios.put(
-      "https://back-campmarket.herokuapp.com/Account",
+      `${process.env.REACT_APP_API_BASE_URL}/Account`,
       body,config
     );
 
